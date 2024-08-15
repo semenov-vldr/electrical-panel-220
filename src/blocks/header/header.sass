@@ -1,0 +1,118 @@
+.header
+  min-height: 70px
+  display: flex
+  align-items: center
+  padding: 20px 0
+  z-index: 3
+  transition: 0.7s
+  border-bottom: 1px solid $grey-line
+  font-weight: 600
+  background-color: $bg
+  @include tablet
+    min-height: 64px
+    padding: 16px 0
+
+
+  &__container
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 100%
+    gap: 32px
+    z-index: 3
+    @include tablet
+      gap: 24px
+
+  &__logo
+    transition: $transition
+    flex: 0 0 135px
+    display: flex
+    align-items: center
+    @include tablet
+      flex: 0 0 105px
+
+  &__logo svg
+    width: 135px
+    transition: $transition
+    @include tablet
+      width: 105px
+
+  &-nav
+    @include tablet
+      top: 0
+      left: 0
+      position: fixed
+      width: 100%
+      height: 100vh
+      background-color: $bg
+      transform: translateY(-100%)
+      opacity: 0
+      visibility: hidden
+      transition: $transition
+      padding: 80px 16px 32px 16px
+      font-size: 24px
+      overflow-y: auto
+      &.js-mobile-nav-open
+        transform: translateY(0)
+        opacity: 1
+        visibility: visible
+      &.js-mobile-nav-open ~ .header__burger .header__burger-line-1
+        transform: rotate(45deg)
+      &.js-mobile-nav-open ~ .header__burger .header__burger-line-2
+        transform: scale(0)
+      &.js-mobile-nav-open ~ .header__burger .header__burger-line-3
+        transform: rotate(-45deg)
+
+    &__list
+      display: flex
+      align-items: center
+      gap: 16px
+      @include tablet
+        gap: 16px
+        flex-direction: column
+        align-items: flex-start
+
+    &__item
+      width: 100%
+      @include tablet
+        padding-bottom: 16px
+        border-bottom: 1px solid $grey-line
+
+    &__link
+      white-space: nowrap
+      transition: $transition
+
+
+  &__burger
+    display: none
+    @include tablet
+      position: relative
+      z-index: 100
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      width: 20px
+      height: 16px
+      flex: 0 0 20px
+      &-line
+        display: block
+        background-color: $black
+        width: 100%
+        height: 2px
+        border-radius: 10px
+      &-line-1
+        transform-origin: 0 0
+        transition: transform 0.4s ease-in-out
+      &-line-2
+        transition: transform 0.2s ease-in-out
+      &-line-3
+        transform-origin: 0 100%
+        transition: transform 0.4s ease-in-out
+
+  &__phone
+    font-size: 20px
+    @include tablet
+      margin-left: auto
+    @include mobile
+      font-weight: 700
+      font-size: 14px

@@ -1,0 +1,67 @@
+@import "containers"
+
+.hidden
+  display: none !important
+
+section
+  scroll-margin: 130px
+  @include mobile
+    scroll-margin: 80px
+
+
+.title-section
+  font-size: 36px
+  text-align: center
+  @extend .ff-decor
+  margin-bottom: 32px !important
+  @include tablet
+    font-size: 32px
+  @include mobile
+    margin-bottom: 24px !important
+    font-size: 24px
+
+.flex-center
+  display: flex
+  align-items: center
+  justify-content: center
+
+
+.button
+  position: relative
+  z-index: 1
+  display: flex
+  align-items: center
+  justify-content: center
+  font-weight: 500
+  padding: 14px 32px
+  min-height: 42px
+  transition: $transition
+  line-height: 1
+  width: fit-content
+  font-size: 24px
+  user-select: none
+  overflow: hidden
+  white-space: nowrap
+  &.button--accent
+    background-color: $accent
+    color: $white
+    &:hover
+      background-color: $accent-hover
+  &.button--outline
+    background-color: $white
+    color: $black
+    border: 1px solid $accent
+  @include mobile
+    width: 100%
+    font-size: 20px
+
+
+.ff-decor
+  font-family: "ProstoOne", sans-serif
+  line-height: 1
+
+
+.scroll-margin
+  scroll-margin: 120px
+  @include mobile
+    scroll-margin: 70px

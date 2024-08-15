@@ -1,0 +1,47 @@
+.advantages
+  border-top: 1px solid $grey-line
+  border-bottom: 1px solid $grey-line
+  @include tablet
+    padding: 40px 0
+
+  &__container
+    @media (min-width: $width-tablet)
+      max-width: 1230px
+
+
+  &__list
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    align-items: center
+    @include tablet
+      gap: 32px
+    @include mobile
+      gap: 40px
+      grid-template-columns: 1fr
+
+  &__item
+    display: flex
+    flex-direction: column
+    gap: 20px
+    align-items: center
+    justify-content: center
+    font-size: 24px
+    font-weight: 600
+    text-decoration: underline
+    text-align: center
+    @media (min-width: $width-tablet)
+      padding: 48px 0
+      height: 100%
+      transition: $transition
+      cursor: pointer
+      &:hover
+        background-color: $grey-line
+        outline: 1px solid $accent
+    @include mobile
+      font-size: 20px
+      &:nth-child(1) img
+        width: 70px
+      &:nth-child(2) img
+        width: 52px
+      &:nth-child(3) img
+        width: 47px

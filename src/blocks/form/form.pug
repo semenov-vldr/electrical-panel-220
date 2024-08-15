@@ -1,0 +1,23 @@
+form.form
+
+    label.form__label-input Имя
+        input(placeholder="Ввидите имя" minlength="3")
+
+    label.form__label-input Телефон
+        input(placeholder="Ввидите номер" inputmode="numeric" data-tel-input)
+
+    .form__connection
+        span.form__connection-caption Удобный способ связи
+
+        fieldset
+            label.form__label-radio Telegram
+                input(type="radio" name="connection" value="Telegram")
+
+            label.form__label-radio Whatsapp
+                input(type="radio" name="connection" value="Whatsapp" checked)
+
+            label.form__label-radio Почта
+                input(type="radio" name="connection" value="Почта")
+
+    button.form__submit.button.button--accent(type="submit") Оставить заявку
+    p.form__agreement Нажимая на кнопку, вы даете согласие на обработку #[a(href="" download) персональных данных]
