@@ -66,6 +66,22 @@ function toggleBlockScrollBody() {
 }
 ;
 "use strict";
+
+// Закрытие dialog по клику на backdrop
+function closeOnBackDropClick(_ref) {
+  var currentTarget = _ref.currentTarget,
+    target = _ref.target;
+  var dialogElement = currentTarget;
+  var isClickedOnBackDrop = target === dialogElement;
+  if (isClickedOnBackDrop) dialogElement.close();
+}
+var dialogElements = document.querySelectorAll("dialog");
+if (dialogElements) {
+  dialogElements.forEach(function (dialogElement) {
+    dialogElement.addEventListener("click", closeOnBackDropClick);
+  });
+}
+"use strict";
 "use strict";
 
 var images = document.querySelectorAll("img");
@@ -76,74 +92,21 @@ if (images) {
 }
 "use strict";
 
-var phoneInputs = document.querySelectorAll('input[data-tel-input]');
-var getInputNumbersValue = function getInputNumbersValue(input) {
-  return input.value.replace(/\D/g, "");
-};
-var onPhoneInput = function onPhoneInput(evt) {
-  var input = evt.target;
-  var inputNumbersValue = getInputNumbersValue(input);
-  var formattedInputValue = "";
-  var selectionStart = input.selectionStart;
-  if (!inputNumbersValue) input.value = "";
-  if (input.value.length !== selectionStart) {
-    if (evt.data && /\D/g.test(evt.data)) {
-      input.value = formattedInputValue;
-    }
-    return;
+var mobileWidthMediaQuery = window.matchMedia('(max-width: 767px)');
+var footerContainer = document.querySelector(".footer__container");
+function changeFooterLineDecor() {
+  if (mobileWidthMediaQuery.matches) {
+    footerContainer.classList.add("v-line");
+    footerContainer.classList.remove("v-line-inner");
+  } else {
+    footerContainer.classList.remove("v-line");
+    footerContainer.classList.add("v-line-inner");
   }
-  if (["7", "8", "9"].indexOf(inputNumbersValue[0]) > -1) {
-    // Российские номера
-    if (inputNumbersValue[0] === "9") inputNumbersValue = "7" + inputNumbersValue;
-    var firstSymbols = inputNumbersValue[0] === "8" ? "8" : "+7";
-    formattedInputValue = firstSymbols + " ";
-    if (inputNumbersValue[0] === "8") {
-      //phoneInputs[0].setAttribute("pattern", ".{17,}");
-      console.log(phoneInputs[0].getAttribute("pattern"));
-    }
-    if (inputNumbersValue.length > 1) {
-      formattedInputValue += "(" + inputNumbersValue.slice(1, 4);
-    }
-    if (inputNumbersValue.length >= 5) {
-      formattedInputValue += ") " + inputNumbersValue.slice(4, 7);
-    }
-    if (inputNumbersValue.length >= 8) {
-      formattedInputValue += "-" + inputNumbersValue.slice(7, 9);
-    }
-    if (inputNumbersValue.length >= 10) {
-      formattedInputValue += "-" + inputNumbersValue.slice(9, 11);
-    }
-
-    // Не российские номера
-  } else formattedInputValue = "+" + inputNumbersValue;
-  input.value = formattedInputValue;
-};
-
-// Стирание первого символа
-var onPhoneKeyDown = function onPhoneKeyDown(evt) {
-  var input = evt.target;
-  if (evt.keyCode === 8 && getInputNumbersValue(input).length === 1) {
-    input.value = "";
-  }
-};
-
-// Вставка цифр в любое место
-var onPhonePaste = function onPhonePaste(evt) {
-  var pasted = evt.clipboardData || window.clipboardData;
-  var input = evt.target;
-  var inputNumbersValue = getInputNumbersValue(input);
-  if (pasted) {
-    var pastedText = pasted.getData("Text");
-    if (/\D/g.test(pastedText)) {
-      input.value = inputNumbersValue;
-    }
-  }
-};
-phoneInputs.forEach(function (input) {
-  input.addEventListener('input', onPhoneInput);
-  input.addEventListener("keydown", onPhoneKeyDown);
-  input.addEventListener("paste", onPhonePaste);
-});
+}
+if (footerContainer) {
+  changeFooterLineDecor();
+  document.addEventListener("resize", changeFooterLineDecor);
+}
 "use strict";
 
 function mobileNav() {
