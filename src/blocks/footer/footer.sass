@@ -1,13 +1,19 @@
 .footer
   position: relative
+  z-index: 1
   background-color: $grey
   color: $white
 
   &__container
-    max-width: 1230px
+    max-width: 1232px
     a:hover
       transition: $transition
       color: $accent-hover
+    @include tablet
+      padding: 0 34px
+    @include mobile
+      padding: 0 16px
+
 
   .v-line::before,
   .v-line::after
@@ -25,22 +31,21 @@
       &::after
         right: calc(33.333% + 40px)
 
-
   &__container
-    padding-top: 32px
-    padding-bottom: 16px
-    & *
+    *
       margin: 0 auto
       text-align: center
-
 
   &__top
     display: grid
     grid-template-columns: repeat(3, 1fr)
-    padding-bottom: 32px
+    padding: 32px 0
+    border-left: 1px solid $white-line
+    border-right: 1px solid $white-line
     @include mobile
       grid-template-columns: 1fr
       width: 100%
+      border: 0
 
 
   &__platforms
@@ -62,7 +67,11 @@
     @include tablet
       max-width: 240px
     @include mobile
+      padding-bottom: 24px
       border-bottom: 1px solid $white-line
+      max-width: none
+      svg
+        max-width: 240px
 
   &__contacts
     display: flex
@@ -73,13 +82,19 @@
     &-caption
       margin-bottom: 4px
       font-size: 24px
+    @include mobile
+      width: 100%
+      padding: 16px 0
+      border-bottom: 1px solid $white-line
 
   &__bottom
     position: relative
     display: grid
     grid-template-columns: repeat(3, 1fr)
-    padding-top: 40px
+    padding: 40px 0 16px
     font-size: 12px
+    border-left: 1px solid $white-line
+    border-right: 1px solid $white-line
     @media (min-width: $width-mobile)
       &::before
         content: ""
@@ -92,6 +107,7 @@
     @include mobile
       grid-template-columns: 1fr
       width: 100%
+      border: 0
 
   &__copyright
     @media (min-width: $width-mobile)

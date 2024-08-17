@@ -2,14 +2,28 @@ section.advantages
     .advantages__container.container.v-line-inner
 
         ul.advantages__list
-            li.advantages__item
+            li.advantages__item(onclick="window.advantages1.showModal()")
                 img.advantages__item-icon(src="./assets/img/advantages/01.svg")
                 span.advantages__item-caption Честная цена
 
-            li.advantages__item
+            li.advantages__item(onclick="window.advantages2.showModal()")
                 img.advantages__item-icon(src="./assets/img/advantages/02.svg")
                 span.advantages__item-caption Гарантия 1 год
 
-            li.advantages__item
+            li.advantages__item(onclick="window.advantages3.showModal()")
                 img.advantages__item-icon(src="./assets/img/advantages/03.svg")
                 span.advantages__item-caption Простая установка
+
+
+    dialog.advantages__popup#advantages1
+        button.advantages__popup-close(type="button" onclick="window.advantages1.close()") &#x2715;
+        p Приобретаем у официальных дилеров комплектующие для сборки электрощитов, при закупке имеем оптовую цену. От розницы она составляет до 20%. Эту скидку дарим вам. Часто может получится так, что не сложная типовая сборка может стоить для вас также, как если бы вы покупали материал в розницу и собирали щит самостоятельно.
+
+
+    dialog.advantages__popup#advantages2
+        button.advantages__popup-close(type="button" onclick="window.advantages12.close()") &#x2715;
+        p Гарантия на оборудование, при заказе нашей сборки - 1 год. Гарантия на работы - 2 года. Но и через 5 лет мы даем консультацию и помощь.
+
+    dialog.advantages__popup#advantages3
+        button.advantages__popup-close(type="button" onclick="window.advantages3.close()") &#x2715;
+        p Готовую сборку собрать можно самостоятельно. Мы всё продумали. Сделали стикеры внутри бокса. Останется только завести потребитель в определённую для него клемму. При проектировании электрощита учитываем внутреннюю эргономику, чтобы подключение было удобным. Тем не менее, подключение щита дело ответственное и лучше доверить это профессиональным электрикам.

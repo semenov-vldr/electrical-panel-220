@@ -45,3 +45,35 @@
         width: 52px
       &:nth-child(3) img
         width: 47px
+
+  &__popup
+    background-color: $white
+    overflow-y: auto
+    min-height: 330px
+    max-width: 768px
+    width: calc(100% - 32px)
+    font-size: 20px
+    padding: 48px 48px 80px
+    margin: auto
+    text-wrap: balance
+    @include mobile
+      font-size: 16px
+      min-height: 280px
+      padding: 40px 16px
+    &::backdrop
+      background-color: rgba(#000, 0.6)
+    &[open]
+      @extend .flex-center
+      flex-direction: column
+
+    &-close
+      font-weight: 600
+      font-size: 20px
+      position: absolute
+      right: 24px
+      top: 24px
+      @include mobile
+        right: 16px
+        top: 16px
+        font-size: 16px
+

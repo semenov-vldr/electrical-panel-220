@@ -1,10 +1,10 @@
 form.form
 
     label.form__label-input Имя
-        input(placeholder="Ввидите имя" minlength="3")
+        input(placeholder="Ввидите имя" name="name" minlength="3" maxlength="20" autocomplete="off")
 
     label.form__label-input Телефон
-        input(placeholder="Ввидите номер" inputmode="numeric" data-tel-input)
+        input(placeholder="Ввидите номер" name="phone" inputmode="numeric" autocomplete="off")
 
     .form__connection
         span.form__connection-caption Удобный способ связи
