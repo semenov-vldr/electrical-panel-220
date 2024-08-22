@@ -90,6 +90,11 @@ if (images) {
     return img.setAttribute("loading", "lazy");
   });
 }
+// const player = videojs('.video-js', {
+//   autoplay: false,
+//   fluid: true
+// });
+"use strict";
 "use strict";
 
 var mobileWidthMediaQuery = window.matchMedia('(max-width: 767px)');
@@ -107,6 +112,10 @@ if (footerContainer) {
   changeFooterLineDecor();
   document.addEventListener("resize", changeFooterLineDecor);
 }
+"use strict";
+
+var maskTel = new Inputmask("+7 (999) 999-99-99");
+maskTel.mask("[type='tel']");
 "use strict";
 
 function mobileNav() {
@@ -152,3 +161,69 @@ function hideLoader() {
 }
 ;
 window.addEventListener('load', hideLoader);
+"use strict";
+
+// Слайдер с миниатюрами
+
+var swiperTop = document.querySelector('.swiper-top');
+var swiperThumbs = document.querySelector('.swiper-thumbs');
+var swiper__thumbs = new Swiper(swiperThumbs, {
+  spaceBetween: 28,
+  slidesPerView: "auto",
+  freeMode: true,
+  watchSlidesProgress: true,
+  watchSlidesVisibility: true,
+  watchOverflow: true,
+  initialSlide: 0
+});
+var swiper__top = new Swiper(swiperTop, {
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true
+  },
+  loop: true,
+  slidesPerView: 1,
+  centeredSlides: true,
+  initialSlide: 0,
+  thumbs: {
+    swiper: swiper__thumbs
+  },
+  effect: 'fade',
+  fadeEffect: {
+    crossFade: true
+  }
+});
+"use strict";
+
+var filter = document.querySelector(".filter");
+if (filter) {
+  var filterCards = function filterCards(filters) {
+    var data = [].concat(dataAttrs);
+  };
+  var filterItems = filter.querySelectorAll(".filter__item, .filter__item-sort");
+
+  // Скрытие каждого меню по клику вне его
+  filterItems.forEach(function (filterItem) {
+    document.addEventListener("click", function (evt) {
+      if (!filterItem.contains(evt.target)) {
+        filterItem.open = false;
+      }
+    });
+  });
+
+  // Фильтрация карточек
+  var mainCatalog = document.querySelector(".main-catalog");
+  var cards = mainCatalog.querySelectorAll(".card");
+  var dataAttrs = [];
+  cards.forEach(function (card) {
+    var dataId = card.dataset.id;
+    var dataPhases = card.dataset.phases;
+    var dataModules = card.dataset.modules;
+    var obj = {
+      id: dataId,
+      phases: dataPhases,
+      modules: dataModules
+    };
+    dataAttrs.push(obj);
+  });
+}
