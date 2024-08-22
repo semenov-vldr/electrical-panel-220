@@ -1,0 +1,43 @@
+.main-catalog__filter.filter
+    .filter__list
+        details.filter__item
+            summary Количество фаз
+            ul
+                li: label 1 фаза
+                    input(type="checkbox" name="phases" value="1 фаза")
+                    span
+                li: label 3 фазы
+                    input(type="checkbox" name="phases" value="3 фазы")
+                    span
+
+        details.filter__item
+            summary Количество модулей
+            ul
+                li: label 12 модулей
+                    input(type="checkbox" name="modules" value="12")
+                    span
+                li: label 24 модуля
+                    input(type="checkbox" name="modules" value="24")
+                    span
+                li: label 36 модулей
+                    input(type="checkbox" name="modules" value="36")
+                    span
+                li: label 54 модуля
+                    input(type="checkbox" name="modules" value="54")
+                    span
+
+        details.filter__item-sort
+            summary Сортировка по
+            ul
+                li: label Популярности
+                    input(type="radio" name="sort" value="popular" checked)
+                    span
+                li: label Подешевле
+                    input(type="radio" name="sort" value="cheap")
+                    span
+                li: label Подороже
+                    input(type="radio" name="sort" value="expensive")
+                    span
+
+
+

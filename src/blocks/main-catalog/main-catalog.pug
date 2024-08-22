@@ -1,0 +1,11 @@
+include ../_items/data-cards
+
+section.main-catalog
+    .main-catalog__container.container.v-line
+        h1.title-section Каталог
+
+        include ../_items/filter/filter
+
+        .main-catalog__grid.v-line-inner
+            //include ../_items/card/card
+            +randerCards(dataCards)

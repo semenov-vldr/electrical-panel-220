@@ -8,6 +8,8 @@
   line-height: 1
   background-color: $bg
   min-width: 285px
+  //max-width: 370px
+  //margin: 0 auto
   @include mobile
     padding: 12px
   @media (min-width: $width-tablet)
@@ -19,8 +21,10 @@
   &__img
     max-height: 380px
     overflow: hidden
+    margin: 0 auto
     img
       transition: $transition
+      height: 100%
     @include tablet
       max-height: 300px
     @include mobile
@@ -34,7 +38,7 @@
     @include fontSize(18, 22)
     text-align: center
     width: fit-content
-    margin: 0 auto 14px
+    margin: 0 auto 16px
     &::after
       content: ""
       position: absolute
@@ -66,7 +70,7 @@
     @include fontSize(16, 20)
     &:not(:last-child)
       border-bottom: 1px solid $grey-line
-    &:nth-child(2)
+    span:nth-child(2)
       white-space: nowrap
 
 

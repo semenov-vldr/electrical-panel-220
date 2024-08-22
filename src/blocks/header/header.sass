@@ -7,10 +7,10 @@
   transition: 0.7s
   border-bottom: 1px solid $grey-line
   font-weight: 600
-  background-color: $bg
   @include tablet
     min-height: 64px
     padding: 16px 0
+    background-color: $bg
 
 
   &__container
@@ -29,11 +29,11 @@
 
   &__logo
     transition: $transition
-    flex: 0 0 135px
+    flex: 0 0 230px
     display: flex
     align-items: center
-    @include tablet
-      flex: 0 0 105px
+    @include mobile
+      flex: 0 0 140px
 
   &__logo svg
     width: 135px
@@ -115,6 +115,7 @@
 
   &__phone
     font-size: 20px
+    white-space: nowrap
     @include tablet
       margin-left: auto
     @include mobile
