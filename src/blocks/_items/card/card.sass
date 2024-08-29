@@ -8,8 +8,7 @@
   line-height: 1
   background-color: $bg
   min-width: 285px
-  //max-width: 370px
-  //margin: 0 auto
+  transition: $transition
   @include mobile
     padding: 12px
   @media (min-width: $width-tablet)
@@ -17,6 +16,8 @@
       filter: brightness(0.6)
     &:hover .card__caption::after
       width: 100%
+  &.js-hidden
+    display: none
 
   &__img
     max-height: 380px

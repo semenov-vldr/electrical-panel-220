@@ -1,15 +1,12 @@
 mixin randerCards(dataList)
   each card in dataList
-      a.card(href=card.link data-id=card.id data-phases=card.phases data-modules=card.modules)
+      a.card(href=card.link data-id=card.id data-phases=card.phases data-modules=card.modules data-price=card.price)
           .card__img
               img(src= card.imgSrc)
           .card__data
               h3.card__caption= card.caption
               span.card__price= `${Intl.NumberFormat('ru-RU').format(card.price)} ₽`
               ul.card__params
-                  li.card__params-item
-                      span Способ монтажа
-                      span накладной/<br>встраеваемый
                   li.card__params-item
                       span Количество фаз
                       span= card.phases

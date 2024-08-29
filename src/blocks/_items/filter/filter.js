@@ -16,31 +16,49 @@ if (filter) {
 
 
 
-
   // Фильтрация карточек
   const mainCatalog = document.querySelector(".main-catalog");
   const cards = mainCatalog.querySelectorAll(".card");
-  const dataAttrs = [];
 
-  cards.forEach(card => {
-    const dataId = card.dataset.id;
-    const dataPhases = card.dataset.phases;
-    const dataModules = card.dataset.modules;
-
-    const obj = {
-      id: dataId,
-      phases: dataPhases,
-      modules: dataModules,
-    }
-    dataAttrs.push(obj);
-  });
+  const filterPhases = filter.querySelector(".filter__item--phases");
+  const filterModules = filter.querySelector(".filter__item--modules");
 
 
-  function filterCards (filters) {
+  filterPhases.addEventListener("change", filterCards);
+  filterModules.addEventListener("change", filterCards);
 
-    const data = [...dataAttrs];
+  function filterCards() {
 
-  }
+    const selectedPhases = Array.from(filterPhases.querySelectorAll("input[type='checkbox']:checked"))
+                            .map(checkbox => checkbox.value);
+    const selectedModules = Array.from(filterModules.querySelectorAll("input[type='checkbox']:checked"))
+                            .map(checkbox => checkbox.value);
+
+
+    cards.forEach(card => {
+      const phases = card.dataset.phases;
+      const modules = card.dataset.modules;
+
+      if (selectedPhases.includes(phases) || selectedModules.includes(modules)) {
+        card.classList.remove("js-hidden");
+      } else {
+        card.classList.add("js-hidden");
+      }
+
+      if (!selectedPhases.length && !selectedModules.length) {
+        card.classList.remove("js-hidden");
+      }
+    });
+
+
+
+
+
+
+  };
+
+
+
 
 
 }

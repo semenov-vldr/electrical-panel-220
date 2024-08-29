@@ -1,5 +1,5 @@
 section.product-page
-    .product-page__container.container
+    .product-page__container.container.v-line
 
         h1.product-page__title.ff-decor 3-х фазный 24 модуля накладной
 
@@ -17,30 +17,87 @@ section.product-page
 
 
         .product-page__buy
-            span.product-page__price 22 801 ₽
-            button.button.button--accent.product-page__button Купить
+            span.product-page__price 22 800 ₽
+            button.button.button--accent.product-page__buy-button Купить
         .product-page__modifications
+            //--- Производитель комплектующих ---
             .product-page__modifications-item.product-page__companies
                 h3.product-page__modifications-item-title Производитель комплектующих
-                ul.product-page__companies-list
-                    li.product-page__companies-item
-                        img(src="./assets/img/icons/companies/dekraft.jpeg")
-                    li.product-page__companies-item
-                        img(src="./assets/img/icons/companies/abb.webp")
-                    li.product-page__companies-item
-                        img(src="./assets/img/icons/companies/chint.jpg")
-                    li.product-page__companies-item
-                        img(src="./assets/img/icons/companies/iek.webp")
-                    li.product-page__companies-item
-                        img(src="./assets/img/icons/companies/keaz.jpg")
+                fieldset.product-page__companies-list.product-page__modifications-list
+                    label(style="background-image: url('./assets/img/icons/companies/dekraft.jpeg')")
+                        input(type="radio" name="company" value="dekraft" checked)
 
+                    label(style="background-image: url('./assets/img/icons/companies/abb.webp')")
+                        input(type="radio" name="company" value="dekraft")
+
+                    label(style="background-image: url('./assets/img/icons/companies/chint.jpg')")
+                        input(type="radio" name="company" value="dekraft")
+
+                    label(style="background-image: url('./assets/img/icons/companies/iek.webp')")
+                        input(type="radio" name="company" value="dekraft")
+
+                    label(style="background-image: url('./assets/img/icons/companies/keaz.jpg')")
+                        input(type="radio" name="company" value="dekraft")
+
+
+            // --- Корпус ---
             .product-page__modifications-item.product-page__case
                 h3.product-page__modifications-item-title Корпус
-                ul.product-page__case-list
-                    li.product-page__case-item.product-page__case-item--checked Встраеваемый
-                    li.product-page__case-item Накладной
+                fieldset.product-page__case-list.product-page__modifications-list
+                    label Встраеваемый
+                        input(type="radio" name="case" value="Встраеваемый")
+                    label Накладной
+                        input(type="radio" name="case" value="Накладной")
 
+            // Открывание
+            .product-page__modifications-item.product-page__loop
+                h3.product-page__modifications-item-title Расположение петель
+                fieldset.product-page__case-list.product-page__modifications-list
+                    label Слева
+                        input(type="radio" name="loop" value="Слева")
+                    label Справа
+                        input(type="radio" name="loop" value="Справа")
 
         .product-page__data
+            fieldset.product-page__data-titles
+                label.product-page__data-title Характеристики
+                    input(type="radio" name="data" value="params" checked)
+                label.product-page__data-title Описание
+                    input(type="radio" name="data" value="desc")
+
             .product-page__params
+                dl.product-page__params-item
+                    dt Степень защиты
+                    dd IP 40
+                dl.product-page__params-item
+                    dt Количество модулей
+                    dd 24
+                dl.product-page__params-item
+                    dt Ширина, мм
+                    dd 300
+                dl.product-page__params-item
+                    dt Высота, мм
+                    dd 390
+                dl.product-page__params-item
+                    dt Глубина, мм
+                    dd 110
+
+
             .product-page__desc
+                p Трехфазный накладной щит в сборе. Адаптирован под типовой загородный дом с выделенной мощностью до 16кВт, предусмотрены основные потребители, 3 группы защищены от утечки и короткого замыкания диф.автоматами, все остальные группы защищены общим УЗО. Автоматика выполнена на компонентной базе DeKraft (Schneider Electric), соблюдена селективность электрической схемы. Максимально функциональный щит для Вашего удобства.
+                p Все соединения промаркированы, приложенная электрическая схема и инструкция по установке помогут выполнить работу по монтажу щита самостоятельно даже без специальных навыков.
+                p В щите предусмотрено подключение следующих потребителей:
+                ul
+                    li Бойлер
+                    li Посудомоечная машина
+                    li Стиральная машина
+                    li 2 группы освещения
+                    li По 1 группе на 3 комнаты
+                    li 2 группы для кухни
+                    li 1 группа для гостиной
+                    li 1 группа для сан.узла
+                    li Резервный автомат для дополнительной группы освещения
+
+                p Дополнительный комплект наклеек для самостоятельной маркировки потребителей в каждом щите.
+                p Производитель оставляет за собой право вносить изменения в схему щита (возможна замена вводного 4-х полюсного автомата на 3-х полюсной и вводную силовую клемму)
+

@@ -5,7 +5,7 @@
   const swiperThumbs = document.querySelector('.swiper-thumbs');
 
   let swiper__thumbs = new Swiper(swiperThumbs, {
-    spaceBetween: 28,
+    spaceBetween: 16,
     slidesPerView: "auto",
     freeMode: true,
     watchSlidesProgress: true,
