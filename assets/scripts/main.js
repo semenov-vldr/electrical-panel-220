@@ -97,6 +97,33 @@ if (images) {
 "use strict";
 "use strict";
 
+var firstScreen = document.querySelector("#first-screen");
+if (firstScreen) {
+  var hiddenFirstScreen = function hiddenFirstScreen() {
+    firstScreen.classList.remove("js-active");
+    unblockScrollBody();
+    setTimeout(function () {
+      firstScreen.remove();
+    }, 1000);
+  };
+  // отчечаем, что первый экран уже был
+  firstScreen.addEventListener("click", function () {
+    window.localStorage.setItem("firstScreen", "on");
+  });
+  var firstScreenLS = window.localStorage.getItem('firstScreen');
+  window.addEventListener("load", function () {
+    firstScreen.classList.add("js-active");
+    if (firstScreenLS === "on") {
+      unblockScrollBody();
+      firstScreen.remove();
+    }
+  });
+  var assembly = firstScreen.querySelector(".first-screen__assembly");
+  assembly.addEventListener("click", hiddenFirstScreen);
+  ;
+}
+"use strict";
+
 var mobileWidthMediaQuery = window.matchMedia('(max-width: 767px)');
 var footerContainer = document.querySelector(".footer__container");
 function changeFooterLineDecor() {
