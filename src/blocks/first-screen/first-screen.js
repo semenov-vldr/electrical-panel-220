@@ -2,7 +2,7 @@ const firstScreen = document.querySelector("#first-screen");
 
 if (firstScreen) {
 
-  // отчечаем, что первый экран уже был
+  // отмечаем, что первый экран уже был
   firstScreen.addEventListener("click", () => {
     window.localStorage.setItem("firstScreen", "on");
   });

@@ -1,20 +1,16 @@
 .filter
-  //display: flex
-  //flex-wrap: wrap
-  //gap: 32px
   margin-bottom: 32px
-  @include mobile
-    //gap: 14px
-
 
   &__list
     display: flex
     gap: 32px
     flex-wrap: wrap
     @include mobile
-      //overflow-x: auto
       padding: 2px
       gap: 14px
+
+  &__item:has(input:checked)
+    outline-color: $accent
 
   &__item,
   &__item-sort
@@ -25,7 +21,6 @@
     padding: 12px
     line-height: 1
     outline: 1px solid rgba(#000, 0.4)
-    transition: $transition
     background-color: $bg
     z-index: 1
     &:hover
@@ -51,8 +46,9 @@
       justify-content: space-between
       gap: 8px
       white-space: nowrap
-      &::marker
-        //display: none
+      list-style: none
+      &::-webkit-details-marker
+        display: none
       &::after
         content: ""
         display: inline-block
@@ -89,7 +85,7 @@
         input
           display: none
           &:checked + span::after
-            display: block
+            scale: 1
 
         span
           position: relative
@@ -106,7 +102,27 @@
             flex: 0 0 16px
           &::after
             content: ""
-            display: none
-            width: 80%
-            height: 80%
+            width: 14px
+            height: 14px
             background-color: $black
+            scale: 0
+            transition: 0.1s
+            @include mobile
+              width: 10px
+              height: 10px
+
+
+  &__item-sort
+    .filter__item-sort-icon
+      display: none
+    @include mobile
+      margin-left: auto
+      summary::after,
+      summary span
+        display: none
+      .filter__item-sort-icon
+        display: block
+      ul
+        width: auto
+        left: initial
+        right: 0

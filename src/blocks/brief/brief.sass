@@ -1,0 +1,91 @@
+.brief
+  margin-top: 32px
+  &__container
+    display: flex
+    gap: 32px
+    justify-content: space-between
+    align-items: flex-start
+    max-width: 1000px
+    @include mobile
+      flex-direction: column
+
+
+  &__back
+    img
+      width: 32px
+      flex: 0 0 32px
+      @include tablet
+        width: 24px
+        flex: 0 0 24px
+      @include mobile
+        width: 16px
+        flex: 0 0 16px
+
+
+  &__content
+    max-width: 600px
+    display: flex
+    flex-direction: column
+    gap: 32px
+
+  &__title
+    @include fontSize(24, 40)
+    font-weight: 500
+
+  &-quiz
+    display: flex
+    flex-direction: column
+    gap: 24px
+
+    &__group
+      display: flex
+      flex-direction: column
+      gap: 16px
+
+    &__group-caption
+      @include fontSize(18, 24)
+      font-weight: 600
+
+    &__radio
+      @include fontSize(16, 20)
+      display: flex
+      flex-direction: row-reverse
+      justify-content: flex-end
+      align-items: center
+      gap: 8px
+      width: fit-content
+      input[type="radio"]
+        display: none
+        &:checked + span::after
+          scale: 1
+        & + span
+          position: relative
+          width: 20px
+          height: 20px
+          border: 1px solid $grey
+          display: flex
+          align-items: center
+          justify-content: center
+          flex: 0 0 20px
+          @include mobile
+            width: 16px
+            height: 16px
+            flex: 0 0 16px
+          &::after
+            content: ""
+            width: 14px
+            height: 14px
+            background-color: $black
+            scale: 0
+            transition: 0.1s
+            @include mobile
+              width: 10px
+              height: 10px
+
+
+
+  .form__submit
+    width: 100%
+
+
+

@@ -2,7 +2,6 @@ const filter = document.querySelector(".filter");
 
 if (filter) {
 
-
   const filterItems = filter.querySelectorAll(".filter__item, .filter__item-sort");
 
   // Скрытие каждого меню по клику вне его
@@ -15,50 +14,27 @@ if (filter) {
   });
 
 
-
   // Фильтрация карточек
-  const mainCatalog = document.querySelector(".main-catalog");
-  const cards = mainCatalog.querySelectorAll(".card");
-
-  const filterPhases = filter.querySelector(".filter__item--phases");
-  const filterModules = filter.querySelector(".filter__item--modules");
-
-
-  filterPhases.addEventListener("change", filterCards);
-  filterModules.addEventListener("change", filterCards);
+  filter.addEventListener("change", filterCards);
+  filter.dispatchEvent(new Event('change'));
 
   function filterCards() {
+    const catalogGrid = document.querySelector(".main-catalog__grid");
+    const cards = catalogGrid.querySelectorAll(".card");
 
-    const selectedPhases = Array.from(filterPhases.querySelectorAll("input[type='checkbox']:checked"))
-                            .map(checkbox => checkbox.value);
-    const selectedModules = Array.from(filterModules.querySelectorAll("input[type='checkbox']:checked"))
-                            .map(checkbox => checkbox.value);
-
+    const phasesChecked = this.querySelectorAll('.filter__item--phases input[type="checkbox"]:checked');
+    const modulesChecked = this.querySelectorAll('.filter__item--modules input[type="checkbox"]:checked');
 
     cards.forEach(card => {
-      const phases = card.dataset.phases;
-      const modules = card.dataset.modules;
+      const MatchesPhases = phasesChecked.length === 0 ||Array.from(phasesChecked,checkbox => checkbox.value)
+                                                              .includes(card.dataset.phases);
 
-      if (selectedPhases.includes(phases) || selectedModules.includes(modules)) {
-        card.classList.remove("js-hidden");
-      } else {
-        card.classList.add("js-hidden");
-      }
+      const MatchesModules = modulesChecked.length === 0 ||Array.from(modulesChecked,checkbox => checkbox.value)
+                                                                .includes(card.dataset.modules);
 
-      if (!selectedPhases.length && !selectedModules.length) {
-        card.classList.remove("js-hidden");
-      }
+      card.classList.toggle("js-hidden", !(MatchesPhases && MatchesModules));
     });
-
-
-
-
-
-
   };
-
-
-
 
 
 }

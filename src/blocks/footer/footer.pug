@@ -1,10 +1,14 @@
+-
+  var avito_link = "https://www.avito.ru/brands/i179409844/all?src=search_seller_info&sellerId=c5b33c578c762fafb427745a1c37ed65"
+  var ozon_link = "https://www.ozon.ru/seller/elektroshchitrf-1593379/stroitelstvo-i-remont-9700/?miniapp=seller_1593379"
+
 footer.footer#footer
     .footer__container.container.v-line-inner
 
         .footer__top
             .footer__platforms(data-da=".footer__container, 767, 1")
-                a(href="##" target="_blank"): img(src="./assets/img/icons/avito.svg")
-                a(href="##" target="_blank"): img(src="./assets/img/icons/ozon.svg")
+                a(href=avito_link target="_blank" title="Магазин на Авито"): img(src="./assets/img/icons/avito.svg")
+                a(href=ozon_link target="_blank" title="Магазин на Озон"): img(src="./assets/img/icons/ozon.svg")
 
             a.footer__logo(href='./')
                 include ../../img/logo.svg

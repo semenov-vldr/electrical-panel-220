@@ -1,0 +1,70 @@
+section.brief#brief
+    .brief__container.container
+        a.brief__back(href="./" title="На главную")
+            img(src="./assets/img/icons/arrow-back.svg")
+
+        .brief__content
+            h2.brief__title.ff-decor Щит на заказ
+
+            .brief__quiz.brief-quiz
+
+                fieldset.brief-quiz__group
+
+                    span.brief-quiz__group-caption Для какого объекта нужен электрощит?
+
+                    label.brief-quiz__radio Дом
+                        input(type="radio" name="объект" value="Дом")
+                        span
+
+                    label.brief-quiz__radio Квартира
+                        input(type="radio" name="объект" value="Квартира")
+                        span
+
+                    label.brief-quiz__radio Баня/Гараж
+                        input(type="radio" name="объект" value="Баня/Гараж")
+                        span
+
+                fieldset.brief-quiz__group
+
+                    span.brief-quiz__group-caption Тип подключения
+
+                    label.brief-quiz__radio 1 фаза
+                        input(type="radio" name="Тип подключения" value="1 фаза")
+                        span
+
+                    label.brief-quiz__radio 3 фазы
+                        input(type="radio" name="Тип подключения" value="3 фазы")
+                        span
+
+                    label.brief-quiz__radio Нужна помощь
+                        input(type="radio" name="Тип подключения" value="Нужна помощь")
+                        span
+
+
+
+                fieldset.brief-quiz__group
+
+                    span.brief-quiz__group-caption Какая у вас выделенная мощность подключения?
+
+                    label.brief-quiz__radio До 10 кВт
+                        input(type="radio" name="мощность" value="До 10 кВт")
+                        span
+
+                    label.brief-quiz__radio До 15 кВт
+                        input(type="radio" name="мощность" value="До 15 кВт")
+                        span
+
+                    label.brief-quiz__radio До 20 кВт
+                        input(type="radio" name="мощность" value="До 20 кВт")
+                        span
+
+                    label.brief-quiz__radio более 25 кВт
+                        input(type="radio" name="мощность" value="более 25 кВт")
+                        span
+
+                    label.brief-quiz__radio Нужна помощь
+                        input(type="radio" name="мощность" value="Нужна помощь")
+                        span
+
+
+            include ../form/form
