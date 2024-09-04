@@ -97,6 +97,18 @@ if (images) {
 "use strict";
 "use strict";
 
+var brief = document.getElementById("brief");
+if (brief) {
+  var openBriefBtns = document.querySelectorAll(".js-brief-open");
+  openBriefBtns.forEach(function (openBriefBtn) {
+    openBriefBtn.addEventListener("click", function () {
+      brief.classList.add("js-visible");
+      blockScrollBody();
+    });
+  });
+}
+"use strict";
+
 var firstScreen = document.querySelector("#first-screen");
 if (firstScreen) {
   var hiddenFirstScreen = function hiddenFirstScreen() {
@@ -106,7 +118,7 @@ if (firstScreen) {
       firstScreen.remove();
     }, 1000);
   };
-  // отчечаем, что первый экран уже был
+  // отмечаем, что первый экран уже был
   firstScreen.addEventListener("click", function () {
     window.localStorage.setItem("firstScreen", "on");
   });
@@ -225,23 +237,18 @@ var swiper__top = new Swiper(swiperTop, {
 var filter = document.querySelector(".filter");
 if (filter) {
   var filterCards = function filterCards() {
-    var selectedPhases = Array.from(filterPhases.querySelectorAll("input[type='checkbox']:checked")).map(function (checkbox) {
-      return checkbox.value;
-    });
-    var selectedModules = Array.from(filterModules.querySelectorAll("input[type='checkbox']:checked")).map(function (checkbox) {
-      return checkbox.value;
-    });
+    var catalogGrid = document.querySelector(".main-catalog__grid");
+    var cards = catalogGrid.querySelectorAll(".card");
+    var phasesChecked = this.querySelectorAll('.filter__item--phases input[type="checkbox"]:checked');
+    var modulesChecked = this.querySelectorAll('.filter__item--modules input[type="checkbox"]:checked');
     cards.forEach(function (card) {
-      var phases = card.dataset.phases;
-      var modules = card.dataset.modules;
-      if (selectedPhases.includes(phases) || selectedModules.includes(modules)) {
-        card.classList.remove("js-hidden");
-      } else {
-        card.classList.add("js-hidden");
-      }
-      if (!selectedPhases.length && !selectedModules.length) {
-        card.classList.remove("js-hidden");
-      }
+      var MatchesPhases = phasesChecked.length === 0 || Array.from(phasesChecked, function (checkbox) {
+        return checkbox.value;
+      }).includes(card.dataset.phases);
+      var MatchesModules = modulesChecked.length === 0 || Array.from(modulesChecked, function (checkbox) {
+        return checkbox.value;
+      }).includes(card.dataset.modules);
+      card.classList.toggle("js-hidden", !(MatchesPhases && MatchesModules));
     });
   };
   var filterItems = filter.querySelectorAll(".filter__item, .filter__item-sort");
@@ -256,11 +263,7 @@ if (filter) {
   });
 
   // Фильтрация карточек
-  var mainCatalog = document.querySelector(".main-catalog");
-  var cards = mainCatalog.querySelectorAll(".card");
-  var filterPhases = filter.querySelector(".filter__item--phases");
-  var filterModules = filter.querySelector(".filter__item--modules");
-  filterPhases.addEventListener("change", filterCards);
-  filterModules.addEventListener("change", filterCards);
+  filter.addEventListener("change", filterCards);
+  filter.dispatchEvent(new Event('change'));
   ;
 }
