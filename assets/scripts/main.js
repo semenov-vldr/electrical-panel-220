@@ -109,6 +109,28 @@ if (brief) {
 }
 "use strict";
 
+var catalogSwiper = new Swiper(".catalog__container", {
+  breakpoints: {
+    320: {
+      spaceBetween: 16,
+      slidesPerView: 1.2
+    },
+    480: {
+      spaceBetween: 16,
+      slidesPerView: 1.8
+    },
+    768: {
+      spaceBetween: 32,
+      slidesPerView: 2.2
+    },
+    960: {
+      spaceBetween: 32,
+      slidesPerView: 3
+    }
+  }
+});
+"use strict";
+
 var firstScreen = document.querySelector("#first-screen");
 if (firstScreen) {
   var hiddenFirstScreen = function hiddenFirstScreen() {
