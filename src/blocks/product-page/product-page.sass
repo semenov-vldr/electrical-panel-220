@@ -9,6 +9,7 @@
     @include mobile
       display: flex
       flex-direction: column
+      text-align: center
     //&::after
     //  content: ""
     //  position: absolute
@@ -20,19 +21,57 @@
 
   &__title
     @include fontSize(18, 29)
+    line-height: 1.4
+    @include mobile
+      padding-top: 24px
+      border-top: 1px solid $grey-line
+
+  &__back
+    display: none
+    width: 16px
+    margin-left: 16px
+
+    @include mobile
+      display: block
+      order: -1
 
   &__slider
+    position: relative
     grid-column: 1 / 2
     grid-row: 2 / 5
     @include mobile
+      position: relative
       order: -1
       max-width: 400px
       margin: 0 auto
+      padding-bottom: 32px
+    &::after
+      content: ""
+      position: absolute
+      width: 1px
+      height: 150%
+      right: -16px
+      top: -137px
+      background-color: $grey-line
 
     .swiper-top
       border: 1px solid $black
       img
         max-height: 570px
+
+      .swiper-pagination
+        bottom: 0
+        @media (min-width: $width-mobile)
+          display: none
+        .swiper-pagination-bullet
+          width: 12px
+          height: 12px
+          border-radius: 0
+          background-color: #D9D9D9
+          transition: $transition
+        .swiper-pagination-bullet-active
+          background-color: $black
+
 
     .swiper-thumbs
       margin-top: 16px
@@ -50,6 +89,10 @@
   &__buy
     grid-column: 2 / 3
     grid-row: 2 / 3
+    @include mobile
+      display: flex
+      flex-direction: column
+      gap: 24px
 
   &__price
     @include fontSize(32, 48)
@@ -57,7 +100,8 @@
 
   &__buy-button
     width: 100%
-    max-width: calc(50% - 16px)
+    @media (min-width: 1000px)
+      max-width: calc(50% - 16px)
 
   &__modifications
     grid-column: 2 / 3
@@ -178,6 +222,7 @@
       color: rgba($black, 0.6)
       & + &
         padding-left: 16px
+        border-left: 1px solid $grey-line
       &:has(input:checked),
       &:hover
         border-bottom: 2px solid $black
@@ -204,3 +249,5 @@
     gap: 4px
     max-height: 330px
     overflow-y: auto
+    text-align: left
+    padding: 0 16px

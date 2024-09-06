@@ -1,8 +1,51 @@
 section.catalog
-    .catalog__container
-        h2.title-section.container Каталог
+    .catalog__container.container.swiper
+        h2.title-section Каталог
 
-        .catalog__list.container
-            include ../_items/card/card
+        .catalog__list.swiper-wrapper
+
+            a.card.swiper-slide(href="")
+                .card__img
+                    img(src="./assets/img/catalog/01.jpg")
+                .card__data
+                    h3.card__caption Название щита
+                    span.card__price 22 801 ₽
+                    ul.card__params
+                        li.card__params-item
+                            span Количество фаз
+                            span 1
+                        li.card__params-item
+                            span Количество модулей
+                            span 24
+
+
+            a.card.swiper-slide(href="")
+                .card__img
+                    img(src="./assets/img/catalog/01.jpg")
+                .card__data
+                    h3.card__caption Название щита
+                    span.card__price 22 801 ₽
+                    ul.card__params
+                        li.card__params-item
+                            span Количество фаз
+                            span 1
+                        li.card__params-item
+                            span Количество модулей
+                            span 24
+
+
+            a.card.swiper-slide(href="")
+                .card__img
+                    img(src="./assets/img/catalog/01.jpg")
+                .card__data
+                    h3.card__caption Название щита
+                    span.card__price 22 801 ₽
+                    ul.card__params
+                        li.card__params-item
+                            span Количество фаз
+                            span 1
+                        li.card__params-item
+                            span Количество модулей
+                            span 24
 
         a.button.button--accent.catalog__button(href="##") Смотреть полностью
