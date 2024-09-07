@@ -224,36 +224,61 @@ function hideLoader() {
 window.addEventListener('load', hideLoader);
 "use strict";
 
-// Слайдер с миниатюрами
+var productPage = document.querySelector(".product-page");
+function createProductSlider(parent) {
+  // Слайдер с миниатюрами
+  var swiperTop = parent.querySelector('.swiper-top');
+  var swiperThumbs = parent.querySelector('.swiper-thumbs');
+  var swiper__thumbs = new Swiper(swiperThumbs, {
+    spaceBetween: 16,
+    slidesPerView: "auto",
+    freeMode: true,
+    watchSlidesProgress: true,
+    watchSlidesVisibility: true,
+    watchOverflow: true,
+    initialSlide: 0
+  });
+  var swiper__top = new Swiper(swiperTop, {
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    loop: true,
+    slidesPerView: 1,
+    centeredSlides: true,
+    initialSlide: 0,
+    thumbs: {
+      swiper: swiper__thumbs
+    },
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    }
+  });
+}
+if (productPage) {
+  var formatPrice = function formatPrice(dataPrice) {
+    productPrice.textContent = "".concat(Intl.NumberFormat('ru-RU').format(dataPrice), " \u20BD");
+  };
+  var productSliders = productPage.querySelectorAll('.product-page__slider');
+  productSliders.forEach(createProductSlider);
+  var productPrice = productPage.querySelector('.product-page__price');
+  var inputRadioCompanies = productPage.querySelectorAll('.product-page__companies input[type="radio"]');
+  ;
+  inputRadioCompanies.forEach(function (company) {
+    company.addEventListener("change", function () {
+      if (company.checked) {
+        // Установка цены по производителю
+        formatPrice(company.dataset.price);
 
-var swiperTop = document.querySelector('.swiper-top');
-var swiperThumbs = document.querySelector('.swiper-thumbs');
-var swiper__thumbs = new Swiper(swiperThumbs, {
-  spaceBetween: 16,
-  slidesPerView: "auto",
-  freeMode: true,
-  watchSlidesProgress: true,
-  watchSlidesVisibility: true,
-  watchOverflow: true,
-  initialSlide: 0
-});
-var swiper__top = new Swiper(swiperTop, {
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true
-  },
-  loop: true,
-  slidesPerView: 1,
-  centeredSlides: true,
-  initialSlide: 0,
-  thumbs: {
-    swiper: swiper__thumbs
-  },
-  effect: 'fade',
-  fadeEffect: {
-    crossFade: true
-  }
-});
+        // Установка слайдера в соответствии с производителем
+        productSliders.forEach(function (slider) {
+          slider.hidden = slider.dataset.company !== company.value;
+        });
+      }
+    });
+  });
+}
 "use strict";
 
 var filter = document.querySelector(".filter");
