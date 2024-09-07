@@ -1,14 +1,14 @@
 include ../blocks/mixins
 
 block variables
-  - var activePage = activePage
+  - var classMain = classMain
 
 doctype html
 html(lang="ru-RU")
     include head
     body
         include ../blocks/header/header
-        main
+        main(class=classMain)
             block content
         include ../blocks/footer/footer
         include ../blocks/first-screen/first-screen

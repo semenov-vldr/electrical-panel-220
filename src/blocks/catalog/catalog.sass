@@ -7,3 +7,28 @@
     @include mobile
       margin-top: 32px
       max-width: 760px
+
+  &.catalog--similar
+    position: relative
+    @media (min-width: $width-mobile)
+      padding: 48px 0
+      &::before,
+      &::after
+        content: ""
+        position: absolute
+        width: 100%
+        height: 1px
+        background-color: $grey-line
+      &::before
+        top: 0
+      &::after
+        bottom: 0
+
+
+.test
+  height: 0
+  .v-line-inner
+    &::before
+      left: calc(33.333% + 35px)
+    &::after
+      right: calc(33.333% + 35px)

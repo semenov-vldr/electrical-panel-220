@@ -1,8 +1,9 @@
-// Слайдер с миниатюрами
+const productPage = document.querySelector(".product-page");
 
-
-  const swiperTop = document.querySelector('.swiper-top');
-  const swiperThumbs = document.querySelector('.swiper-thumbs');
+function createProductSlider (parent) {
+  // Слайдер с миниатюрами
+  const swiperTop = parent.querySelector('.swiper-top');
+  const swiperThumbs = parent.querySelector('.swiper-thumbs');
 
   let swiper__thumbs = new Swiper(swiperThumbs, {
     spaceBetween: 16,
@@ -31,3 +32,50 @@
       crossFade: true,
     }
   });
+}
+
+
+if (productPage) {
+
+  const productSliders = productPage.querySelectorAll('.product-page__slider');
+  productSliders.forEach(createProductSlider);
+
+  const productPrice = productPage.querySelector('.product-page__price');
+  const inputRadioCompanies = productPage.querySelectorAll('.product-page__companies input[type="radio"]');
+
+  function formatPrice (dataPrice) {
+    productPrice.textContent = `${Intl.NumberFormat('ru-RU').format(dataPrice)} ₽`;
+  };
+
+  inputRadioCompanies.forEach(company => {
+    company.addEventListener("change", () => {
+
+      if (company.checked) {
+        // Установка цены по производителю
+        formatPrice(company.dataset.price);
+
+        // Установка слайдера в соответствии с производителем
+        productSliders.forEach(slider => {
+          slider.hidden = slider.dataset.company !== company.value
+        });
+      }
+    });
+  });
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

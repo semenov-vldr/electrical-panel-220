@@ -13,3 +13,17 @@ mixin randerCards(dataList)
                   li.card__params-item
                       span Количество модулей
                       span= card.modules
+
+
+mixin productSlider(name, directory)
+    .product-page__slider.scheme(data-company=name hidden)
+        .swiper-top
+            .swiper-wrapper
+                img.swiper-slide(src=`./assets/img/products/${directory}/${name}.png`)
+                img.swiper-slide(src=`./assets/img/products/24m1p/03.jpg`)
+            .swiper-pagination
+        .swiper-thumbs
+            .swiper-wrapper
+                img.swiper-slide(src=`./assets/img/products/${directory}/${name}.png`)
+                img.swiper-slide(src=`./assets/img/products/24m1p/03.jpg`)
+

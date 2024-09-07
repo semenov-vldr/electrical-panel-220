@@ -28,3 +28,15 @@ main
   @media (max-width: $width-mobile)
     gap: 80px
     padding-bottom: 80px
+  &.product
+    gap: 0
+    @media (max-width: $width-mobile)
+      gap: 0
+
+
+section + section:not(.product-page)
+  margin-top: 96px
+  @media (max-width: $width-mobile)
+    margin-top: 80px
+  @media (max-width: 400px)
+    margin-top: 56px
