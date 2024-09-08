@@ -1,5 +1,15 @@
 .filter
   margin-bottom: 32px
+  @media (min-width: $width-mobile)
+    position: relative
+    &::after
+      content: ""
+      position: absolute
+      height: 1px
+      width: 200vw
+      bottom: -17px
+      left: -50vw
+      background-color: $grey-line
 
   &__list
     display: flex

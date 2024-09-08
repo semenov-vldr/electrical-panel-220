@@ -121,12 +121,16 @@
     grid-template-columns: repeat(2, 1fr)
     gap: 32px
     border-top: 1px solid $grey-line
-    padding-top: 24px
+    border-bottom: 1px solid $grey-line
+    margin: 0 -16px
+    padding: 24px 16px
     @include tablet
       display: flex
       flex-direction: column
     @include mobile
       padding: 24px 16px 0
+      margin: 0
+      border-bottom: 0
 
     &-item
       display: flex
@@ -147,10 +151,9 @@
   &__companies
     position: relative
     grid-row: 1 / 3
-
     label
       height: 43px
-      min-width: 120px
+      min-width: 128px
       max-width: 150px
       border: 1px solid $grey-line
       cursor: pointer
@@ -161,14 +164,6 @@
         display: none
       &:has(input:checked)
         border: 2px solid $black
-    &::after
-      content: ""
-      position: absolute
-      right: -16px
-      top: 0
-      width: 1px
-      height: 100%
-      background-color: $grey-line
     &-list
       display: grid
       grid-template-columns: repeat(auto-fill, minmax(130px, 1fr))
@@ -176,6 +171,19 @@
         display: flex
         flex-wrap: wrap
         gap: 16px
+    @media (min-width: $width-mobile)
+      margin: -24px 0
+      padding: 24px 0
+      justify-content: center
+      &::after
+        content: ""
+        position: absolute
+        width: 1px
+        height: calc(100% + 52px)
+        background-color: $grey-line
+        top: 0
+        right: -16px
+
 
 
 
@@ -208,8 +216,6 @@
     display: flex
     flex-direction: column
     gap: 16px
-    border-top: 1px solid $grey-line
-    padding-top: 24px
     input[type="radio"]
       display: none
     @include mobile
@@ -219,8 +225,11 @@
       grid-template-columns: repeat(2, 1fr)
       font-size: 20px
       font-weight: 600
+      @media (min-width: $width-mobile)
+        margin: 0 -16px
       @include mobile
         font-size: 18px
+        border-top: 1px solid $grey-line
       &:has(input[value="params"]:checked) ~ .product-page__params
         display: flex
       &:has(input[value="desc"]:checked) ~ .product-page__desc
@@ -231,9 +240,12 @@
       cursor: pointer
       border-bottom: 1px solid $grey-line
       color: rgba($black, 0.6)
-      & + &
+      @media (min-width: $width-mobile)
         padding-left: 16px
-        border-left: 1px solid $grey-line
+      @include mobile
+        padding: 8px 0
+        &:nth-child(2)
+          border-left: 1px solid $grey-line
       &:has(input:checked),
       &:hover
         border-bottom: 2px solid $black
@@ -251,6 +263,9 @@
       &:not(:last-child)
         padding-bottom: 8px
         border-bottom: 1px solid $grey-line
+        @media (min-width: $width-mobile)
+          padding: 0 16px 8px
+          margin: 0 -16px
     @include mobile
       padding: 0 16px
 

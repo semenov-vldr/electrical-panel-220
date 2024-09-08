@@ -10,7 +10,7 @@
     @include tablet
       gap: 16px
       grid-template-columns: repeat(2, 1fr)
-    @include mobile
+    @media (max-width: 540px)
       grid-template-columns: 1fr
 
   .v-line-inner::before
