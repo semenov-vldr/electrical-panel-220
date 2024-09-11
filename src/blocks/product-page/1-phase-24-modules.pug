@@ -1,0 +1,156 @@
+section.product-page
+
+    .product-page__container.container.v-line
+
+        a.product-page__back(href="catalog.html" title="К странице Каталога")
+            img(src="./assets/img/icons/arrow-back.svg")
+
+        h1.product-page__title.ff-decor Электрощит однофазный&nbsp;24&nbsp;модуля
+
+
+        // ------ Slider ------
+        // dekraft
+        .product-page__slider(data-company="dekraft")
+            .swiper-top
+                .swiper-wrapper
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/01.jpg")
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/02.jpg")
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/03.jpg")
+                .swiper-pagination
+
+            .swiper-thumbs
+                .swiper-wrapper
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/01.jpg")
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/02.jpg")
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/03.jpg")
+
+
+        // abb
+        .product-page__slider.scheme(data-company="abb" hidden)
+            .swiper-top
+                .swiper-wrapper
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/abb.png")
+                .swiper-pagination
+            .swiper-thumbs
+                .swiper-wrapper
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/abb.png")
+
+        // chint
+        .product-page__slider.scheme(data-company="chint" hidden)
+            .swiper-top
+                .swiper-wrapper
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/chint.png")
+                .swiper-pagination
+            .swiper-thumbs
+                .swiper-wrapper
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/chint.png")
+
+
+        // iek
+        .product-page__slider.scheme(data-company="iek" hidden)
+            .swiper-top
+                .swiper-wrapper
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/iek.png")
+                .swiper-pagination
+            .swiper-thumbs
+                .swiper-wrapper
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/iek.png")
+
+
+        // keaz
+        .product-page__slider.scheme(data-company="keaz" hidden)
+            .swiper-top
+                .swiper-wrapper
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/keaz.png")
+                .swiper-pagination
+            .swiper-thumbs
+                .swiper-wrapper
+                    img.swiper-slide(src="./assets/img/products/1-24m1p/keaz.png")
+
+        // ------ Slider END ------
+
+
+        .product-page__buy
+            span.product-page__price 23 000 ₽
+            button.button.button--accent.product-page__buy-button Купить
+        .product-page__modifications
+            //--- Производитель комплектующих ---
+            .product-page__modifications-item.product-page__companies
+                h3.product-page__modifications-item-title Комплектующие
+                fieldset.product-page__companies-list.product-page__modifications-list
+                    label(style="background-image: url('./assets/img/icons/companies/dekraft.png')")
+                        input(type="radio" name="company" value="dekraft" data-price="23000" checked)
+
+                    label(style="background-image: url('./assets/img/icons/companies/abb.png')")
+                        input(type="radio" name="company" value="abb" data-price="34000")
+
+                    label(style="background-image: url('./assets/img/icons/companies/chint.png')")
+                        input(type="radio" name="company" value="chint" data-price="27000")
+
+                    label(style="background-image: url('./assets/img/icons/companies/iek.png')")
+                        input(type="radio" name="company" value="iek" data-price="23500")
+
+                    label(style="background-image: url('./assets/img/icons/companies/keaz.png')")
+                        input(type="radio" name="company" value="keaz" data-price="25000")
+
+
+            // --- Корпус ---
+            .product-page__modifications-item.product-page__case
+                h3.product-page__modifications-item-title Корпус
+                fieldset.product-page__case-list.product-page__modifications-list
+                    label Встраеваемый
+                        input(type="radio" name="case" value="Встраеваемый" checked)
+                    label Накладной
+                        input(type="radio" name="case" value="Накладной")
+
+            // Открывание
+            .product-page__modifications-item.product-page__loop
+                h3.product-page__modifications-item-title Расположение петель
+                fieldset.product-page__case-list.product-page__modifications-list
+                    label Слева
+                        input(type="radio" name="loop" value="Слева" checked)
+                    label Справа
+                        input(type="radio" name="loop" value="Справа")
+
+        .product-page__data
+            fieldset.product-page__data-titles
+                label.product-page__data-title Характеристики
+                    input(type="radio" name="data" value="params" checked)
+                label.product-page__data-title Описание
+                    input(type="radio" name="data" value="desc")
+
+            .product-page__params
+                dl.product-page__params-item
+                    dt Степень защиты
+                    dd IP 40
+                dl.product-page__params-item
+                    dt Количество модулей
+                    dd 24
+                dl.product-page__params-item
+                    dt Ширина, мм
+                    dd 300
+                dl.product-page__params-item
+                    dt Высота, мм
+                    dd 390
+                dl.product-page__params-item
+                    dt Глубина, мм
+                    dd 110
+
+
+            .product-page__desc
+                p Трехфазный накладной щит в сборе. Адаптирован под типовой загородный дом с выделенной мощностью до 16кВт, предусмотрены основные потребители, 3 группы защищены от утечки и короткого замыкания диф.автоматами, все остальные группы защищены общим УЗО. Автоматика будет выполнена на выбранной компонентной базе ("Комплектующие"), соблюдена селективность электрической схемы. Максимально функциональный щит для Вашего удобства.
+                p Все соединения промаркированы, приложенная электрическая схема и инструкция по установке помогут выполнить работу по монтажу щита самостоятельно даже без специальных навыков.
+                p В щите предусмотрено подключение следующих потребителей:
+                ol
+                    li Бойлер
+                    li Посудомоечная машина
+                    li Стиральная машина
+                    li 2 группы освещения
+                    li По 1 группе на 3 комнаты
+                    li 2 группы для кухни
+                    li 1 группа для гостиной
+                    li 1 группа для сан.узла
+                    li Резервный автомат для дополнительной группы освещения
+
+                p Дополнительный комплект наклеек для самостоятельной маркировки потребителей в каждом щите.
+                p Производитель оставляет за собой право вносить изменения в схему щита (возможна замена вводного 4-х полюсного автомата на 3-х полюсной и вводную силовую клемму).

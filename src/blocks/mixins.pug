@@ -15,15 +15,64 @@ mixin randerCards(dataList)
                       span= card.modules
 
 
-mixin productSlider(name, directory)
-    .product-page__slider.scheme(data-company=name hidden)
-        .swiper-top
-            .swiper-wrapper
-                img.swiper-slide(src=`./assets/img/products/${directory}/${name}.png`)
-                img.swiper-slide(src=`./assets/img/products/24m1p/03.jpg`)
-            .swiper-pagination
-        .swiper-thumbs
-            .swiper-wrapper
-                img.swiper-slide(src=`./assets/img/products/${directory}/${name}.png`)
-                img.swiper-slide(src=`./assets/img/products/24m1p/03.jpg`)
+mixin productPageBack
+    a.product-page__back(href="catalog.html" title="К странице Каталога")
+        img(src="./assets/img/icons/arrow-back.svg")
+
+
+
+mixin productPageBuy(price)
+    .product-page__buy
+        span.product-page__price= `${Intl.NumberFormat('ru-RU').format(price)} ₽`
+        button.button.button--accent.product-page__buy-button Купить
+
+
+mixin productPageCompanies(dekraftPrice, abbPrice, chintPrice, iekPrice, keazPrice)
+    .product-page__modifications-item.product-page__companies
+        h3.product-page__modifications-item-title Комплектующие
+        fieldset.product-page__companies-list.product-page__modifications-list
+            label(style="background-image: url('./assets/img/icons/companies/dekraft.png')")
+                input(type="radio" name="company" value="dekraft" data-price=dekraftPrice checked)
+
+            label(style="background-image: url('./assets/img/icons/companies/abb.png')")
+                input(type="radio" name="company" value="abb" data-price=abbPrice)
+
+            label(style="background-image: url('./assets/img/icons/companies/chint.png')")
+                input(type="radio" name="company" value="chint" data-price=chintPrice)
+
+            label(style="background-image: url('./assets/img/icons/companies/iek.png')")
+                input(type="radio" name="company" value="iek" data-price=iekPrice)
+
+            label(style="background-image: url('./assets/img/icons/companies/keaz.png')")
+                input(type="radio" name="company" value="keaz" data-price=keazPrice)
+
+
+mixin productPageCase
+    .product-page__modifications-item.product-page__case
+        h3.product-page__modifications-item-title Корпус
+        fieldset.product-page__case-list.product-page__modifications-list
+            label Встраеваемый
+                input(type="radio" name="case" value="Встраеваемый" checked)
+            label Накладной
+                input(type="radio" name="case" value="Накладной")
+
+
+mixin productPageLoop
+    .product-page__modifications-item.product-page__loop
+        h3.product-page__modifications-item-title Расположение петель
+        fieldset.product-page__case-list.product-page__modifications-list
+            label Слева
+                input(type="radio" name="loop" value="Слева" checked)
+            label Справа
+                input(type="radio" name="loop" value="Справа")
+
+
+mixin productPageDataTitles
+    fieldset.product-page__data-titles
+        label.product-page__data-title Характеристики
+            input(type="radio" name="data" value="params" checked)
+        label.product-page__data-title Описание
+            input(type="radio" name="data" value="desc")
+
+
 
