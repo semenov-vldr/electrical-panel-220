@@ -155,6 +155,14 @@ if (firstScreen) {
   var assembly = firstScreen.querySelector(".first-screen__assembly");
   assembly.addEventListener("click", hiddenFirstScreen);
   ;
+
+  // Очистка из localStorage данных о первом экране
+  var footerDetails = document.querySelector(".footer__details");
+  if (footerDetails) {
+    footerDetails.addEventListener("click", function () {
+      window.localStorage.removeItem('firstScreen');
+    });
+  }
 }
 "use strict";
 
@@ -223,6 +231,7 @@ function hideLoader() {
 ;
 window.addEventListener('load', hideLoader);
 "use strict";
+"use strict";
 
 var productPage = document.querySelector(".product-page");
 function createProductSlider(parent) {
@@ -258,7 +267,8 @@ function createProductSlider(parent) {
 }
 if (productPage) {
   var formatPrice = function formatPrice(dataPrice) {
-    productPrice.textContent = "".concat(Intl.NumberFormat('ru-RU').format(dataPrice), " \u20BD");
+    console.log(dataPrice);
+    productPrice.textContent = "".concat(dataPrice.toLocaleString('ru-RU'), " \u20BD");
   };
   var productSliders = productPage.querySelectorAll('.product-page__slider');
   productSliders.forEach(createProductSlider);
@@ -269,7 +279,7 @@ if (productPage) {
     company.addEventListener("change", function () {
       if (company.checked) {
         // Установка цены по производителю
-        formatPrice(company.dataset.price);
+        formatPrice(+company.dataset.price);
 
         // Установка слайдера в соответствии с производителем
         productSliders.forEach(function (slider) {
@@ -298,6 +308,19 @@ if (filter) {
       card.classList.toggle("js-hidden", !(MatchesPhases && MatchesModules));
     });
   };
+  // Функция сортировки и обновления порядка карточек
+  var sortingCards = function sortingCards() {
+    mainCatalog.replaceChildren();
+    var selectedSort = filterSort.querySelector("input:checked").value;
+    var sortingValue = {
+      cheap: sortingCheaperProductCards,
+      expensive: sortingExpensiveProductCards,
+      popular: cards
+    }[selectedSort];
+    sortingValue.forEach(function (card) {
+      return mainCatalog.appendChild(card);
+    });
+  };
   var filterItems = filter.querySelectorAll(".filter__item, .filter__item-sort");
 
   // Скрытие каждого меню по клику вне его
@@ -313,4 +336,21 @@ if (filter) {
   filter.addEventListener("change", filterCards);
   filter.dispatchEvent(new Event('change'));
   ;
+
+  // ---- Сортировка карточек ----
+  var filterSort = filter.querySelector(".filter__item-sort");
+  var mainCatalog = document.querySelector(".main-catalog__grid");
+  var cards = mainCatalog.querySelectorAll(".card");
+
+  // Сначала дешевле
+  var sortingCheaperProductCards = Array.from(cards).sort(function (a, b) {
+    return +a.dataset.price - +b.dataset.price;
+  });
+
+  // Сначала дороже
+  var sortingExpensiveProductCards = Array.from(cards).sort(function (a, b) {
+    return +b.dataset.price - +a.dataset.price;
+  });
+  ;
+  filterSort.addEventListener("change", sortingCards);
 }
