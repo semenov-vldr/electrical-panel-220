@@ -1,11 +1,12 @@
 -
-  const folder = "12-24м3р";
+    const folder = "12м3р";
+    const holderImgSrc = "this.src=`https://akbflash.ru/files/images/cache/placeHolder/placeHolder.png`";
 
 section.product-page
 
     .product-page__container.container.v-line
         +productPageBack
-        h1.product-page__title.ff-decor Электрощит трехфазный&nbsp;24&nbsp;модуля
+        h1.product-page__title.ff-decor Электрощит трехфазный&nbsp;12&nbsp;модулей
 
         // ------ Slider ------
         // dekraft
@@ -15,10 +16,6 @@ section.product-page
                     img.swiper-slide(src=`./assets/img/products/${folder}/01.jpg`)
                     img.swiper-slide(src=`./assets/img/products/${folder}/02.jpg`)
                     img.swiper-slide(src=`./assets/img/products/${folder}/03.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/04.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/05.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/06.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/07.jpg`)
                 .swiper-pagination
 
             .swiper-thumbs
@@ -26,67 +23,55 @@ section.product-page
                     img.swiper-slide(src=`./assets/img/products/${folder}/01.jpg`)
                     img.swiper-slide(src=`./assets/img/products/${folder}/02.jpg`)
                     img.swiper-slide(src=`./assets/img/products/${folder}/03.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/04.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/05.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/06.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/07.jpg`)
 
 
         // abb
         .product-page__slider.scheme(data-company="abb" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src=`./assets/img/products/${folder}/abb/01.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/abb/02.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/abb/03.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/abb/04.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/abb/05.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/abb.png`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/abb.jpg` onerror=holderImgSrc)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src=`./assets/img/products/${folder}/abb/01.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/abb/02.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/abb/03.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/abb/04.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/abb/05.jpg`)
-                    img.swiper-slide(src=`./assets/img/products/${folder}/abb.png`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/abb.jpg` onerror=holderImgSrc)
+
+
 
         // chint
         .product-page__slider.scheme(data-company="chint" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src=`./assets/img/products/${folder}/chint.png`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/chint.png` onerror=holderImgSrc)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src=`./assets/img/products/${folder}/chint.png`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/chint.png` onerror=holderImgSrc)
 
 
         // iek
         .product-page__slider.scheme(data-company="iek" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src=`./assets/img/products/${folder}/iek.png`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/iek.png` onerror=holderImgSrc)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src=`./assets/img/products/${folder}/iek.png`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/iek.png` onerror=holderImgSrc)
 
 
         // keaz
         .product-page__slider.scheme(data-company="keaz" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src=`./assets/img/products/${folder}/keaz.png`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/keaz.png` onerror=holderImgSrc)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src=`./assets/img/products/${folder}/keaz.png`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/keaz.png` onerror=holderImgSrc)
 
         // ------ Slider END ------
 
-        - const modif = "24м3р";
+        - const modif = "12м3р";
         +productPageBuy(objPrices[modif].dekraft)
         .product-page__modifications
             //--- Производитель комплектующих ---
@@ -102,22 +87,22 @@ section.product-page
             .product-page__params
                 dl.product-page__params-item
                     dt Степень защиты
-                    dd IP 40
+                    dd IP 41
                 dl.product-page__params-item
                     dt Количество модулей
-                    dd 24
+                    dd 12
                 dl.product-page__params-item
                     dt Количество рядов
-                    dd 2
+                    dd 1
                 dl.product-page__params-item
                     dt Ширина, мм
                     dd 300
                 dl.product-page__params-item
                     dt Высота, мм
-                    dd 390
+                    dd 212
                 dl.product-page__params-item
                     dt Глубина, мм
-                    dd 110
+                    dd 89
 
 
             .product-page__desc
@@ -125,15 +110,8 @@ section.product-page
                 p Все соединения промаркированы, приложенная электрическая схема и инструкция по установке помогут выполнить работу по монтажу щита самостоятельно даже без специальных навыков.
                 p В щите предусмотрено подключение следующих потребителей:
                 ol
-                    li Бойлер
-                    li Посудомоечная машина
-                    li Стиральная машина
-                    li 2 группы освещения
-                    li По 1 группе на 3 комнаты
-                    li 2 группы для кухни
-                    li 1 группа для гостиной
-                    li 1 группа для сан.узла
-                    li Резервный автомат для дополнительной группы освещения
+                    li 5 силовых групп с нагрузкой до 5,5 кВт на каждую
+                    li 4 группы освещения с нагрузкой до 3,5 кВт на каждую
 
                 p Дополнительный комплект наклеек для самостоятельной маркировки потребителей в каждом щите.
                 p Производитель оставляет за собой право вносить изменения в схему щита (возможна замена вводного 4-х полюсного автомата на 3-х полюсной и вводную силовую клемму).

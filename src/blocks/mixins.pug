@@ -5,7 +5,7 @@ mixin randerCards(dataList)
               img(src= card.imgSrc)
           .card__data
               h3.card__caption= card.caption
-              span.card__price= `${Intl.NumberFormat('ru-RU').format(card.price)} ₽`
+              span.card__price= `${card.price.toLocaleString()} ₽`
               ul.card__params
                   li.card__params-item
                       span Количество фаз
@@ -23,8 +23,8 @@ mixin productPageBack
 
 mixin productPageBuy(price)
     .product-page__buy
-        span.product-page__price= `${Intl.NumberFormat('ru-RU').format(price)} ₽`
-        button.button.button--accent.product-page__buy-button Купить
+        span.product-page__price= `${price.toLocaleString()} ₽`
+        button.button.button--accent.product-page__buy-button(onclick="window.formPopup.showModal()") Купить
 
 
 mixin productPageCompanies(dekraftPrice, abbPrice, chintPrice, iekPrice, keazPrice)

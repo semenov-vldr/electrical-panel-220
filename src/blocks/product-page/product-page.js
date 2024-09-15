@@ -44,7 +44,8 @@ if (productPage) {
   const inputRadioCompanies = productPage.querySelectorAll('.product-page__companies input[type="radio"]');
 
   function formatPrice (dataPrice) {
-    productPrice.textContent = `${Intl.NumberFormat('ru-RU').format(dataPrice)} ₽`;
+    console.log(dataPrice)
+    productPrice.textContent = `${dataPrice.toLocaleString('ru-RU')} ₽`;
   };
 
   inputRadioCompanies.forEach(company => {
@@ -52,7 +53,7 @@ if (productPage) {
 
       if (company.checked) {
         // Установка цены по производителю
-        formatPrice(company.dataset.price);
+        formatPrice(+company.dataset.price);
 
         // Установка слайдера в соответствии с производителем
         productSliders.forEach(slider => {

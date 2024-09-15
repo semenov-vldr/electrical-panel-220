@@ -1,76 +1,77 @@
+- const folder = "9-12м1рРН";
+
 section.product-page
 
     .product-page__container.container.v-line
         +productPageBack
-        h1.product-page__title.ff-decor Электрощит однофазный&nbsp;12&nbsp;модуля
+        h1.product-page__title.ff-decor Электрощит однофазный&nbsp;12&nbsp;модулей
 
         // ------ Slider ------
         // dekraft
         .product-page__slider(data-company="dekraft")
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/01.jpg")
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/02.jpg")
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/03.jpg")
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/04.jpg")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/01.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/02.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/03.jpg`)
                 .swiper-pagination
 
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/01.jpg")
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/02.jpg")
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/03.jpg")
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/04.jpg")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/01.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/02.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/03.jpg`)
 
 
         // abb
         .product-page__slider.scheme(data-company="abb" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/abb.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/abb.png`)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/abb.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/abb.png`)
 
         // chint
         .product-page__slider.scheme(data-company="chint" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/chint.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/chint.png`)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/chint.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/chint.png`)
 
 
         // iek
         .product-page__slider.scheme(data-company="iek" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/iek.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/iek.png`)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/iek.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/iek.png`)
 
 
         // keaz
         .product-page__slider.scheme(data-company="keaz" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/keaz.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/keaz.png`)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/10-12м1pe/keaz.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/keaz.png`)
 
         // ------ Slider END ------
 
-        +productPageBuy(14500)
+        - const modif = "12м1рРН";
+        +productPageBuy(objPrices[modif].dekraft)
         .product-page__modifications
             //--- Производитель комплектующих ---
-            +productPageCompanies(14500, 18300, 15600, 14300, 14800)
+            +productPageCompanies(objPrices[modif].dekraft, objPrices[modif].abb, objPrices[modif].chint, objPrices[modif].iek, objPrices[modif].keaz)
             // --- Корпус ---
             +productPageCase
             // Открывание

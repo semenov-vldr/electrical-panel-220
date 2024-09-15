@@ -1,0 +1,11 @@
+dialog.form-popup#formPopup
+    button.form-popup__close(type="button" onclick="window.formPopup.close()") &#x2715;
+
+    .form-popup__body
+        .form-popup__header
+            h2.form-popup__title Новый заказ
+            span.form-popup__product-name Электрощит однофазный 24 модуля
+            span.form-popup__product-price 23 000 ₽
+            span.form-popup__product-company Dekraft
+
+        include ../form/form

@@ -1,3 +1,6 @@
+-
+    const folder = "8-54м3рРН";
+
 section.product-page
 
     .product-page__container.container.v-line
@@ -9,70 +12,71 @@ section.product-page
         .product-page__slider(data-company="dekraft")
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/01.jpg")
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/02.jpg")
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/03.jpg")
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/04.jpg")
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/05.jpg")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/01.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/02.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/03.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/04.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/05.jpg`)
                 .swiper-pagination
 
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/01.jpg")
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/02.jpg")
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/03.jpg")
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/04.jpg")
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/05.jpg")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/01.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/02.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/03.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/04.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/05.jpg`)
 
 
         // abb
         .product-page__slider.scheme(data-company="abb" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/abb.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/abb.png`)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/abb.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/abb.png`)
 
         // chint
         .product-page__slider.scheme(data-company="chint" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/chint.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/chint.png`)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/chint.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/chint.png`)
 
 
         // iek
         .product-page__slider.scheme(data-company="iek" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/iek.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/iek.png`)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/iek.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/iek.png`)
 
 
         // keaz
         .product-page__slider.scheme(data-company="keaz" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/keaz.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/keaz.png`)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/8-54м3рРН/keaz.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/keaz.png`)
 
         // ------ Slider END ------
 
-        +productPageBuy(14500)
+        - const modif = "54м3рРН";
+        +productPageBuy(objPrices[modif].dekraft)
         .product-page__modifications
             //--- Производитель комплектующих ---
-            +productPageCompanies(40800, 58800, 45800, 41300, 42800)
+            +productPageCompanies(objPrices[modif].dekraft, objPrices[modif].abb, objPrices[modif].chint, objPrices[modif].iek, objPrices[modif].keaz)
             // --- Корпус ---
             +productPageCase
             // Открывание
@@ -84,35 +88,27 @@ section.product-page
             .product-page__params
                 dl.product-page__params-item
                     dt Степень защиты
-                    dd IP 40
+                    dd IP 41
                 dl.product-page__params-item
                     dt Количество модулей
                     dd 24
                 dl.product-page__params-item
+                    dt Количество рядов
+                    dd 3
+                dl.product-page__params-item
                     dt Ширина, мм
-                    dd 300
+                    dd 398
                 dl.product-page__params-item
                     dt Высота, мм
-                    dd 390
+                    dd 535
                 dl.product-page__params-item
                     dt Глубина, мм
-                    dd 110
+                    dd 102
 
 
             .product-page__desc
-                p Трехфазный накладной щит в сборе. Адаптирован под типовой загородный дом с выделенной мощностью до 16кВт, предусмотрены основные потребители, 3 группы защищены от утечки и короткого замыкания диф.автоматами, все остальные группы защищены общим УЗО. Автоматика будет выполнена на выбранной компонентной базе ("Комплектующие"), соблюдена селективность электрической схемы. Максимально функциональный щит для Вашего удобства.
-                p Все соединения промаркированы, приложенная электрическая схема и инструкция по установке помогут выполнить работу по монтажу щита самостоятельно даже без специальных навыков.
-                p В щите предусмотрено подключение следующих потребителей:
-                ol
-                    li Бойлер
-                    li Посудомоечная машина
-                    li Стиральная машина
-                    li 2 группы освещения
-                    li По 1 группе на 3 комнаты
-                    li 2 группы для кухни
-                    li 1 группа для гостиной
-                    li 1 группа для сан.узла
-                    li Резервный автомат для дополнительной группы освещения
-
-                p Дополнительный комплект наклеек для самостоятельной маркировки потребителей в каждом щите.
-                p Производитель оставляет за собой право вносить изменения в схему щита (возможна замена вводного 4-х полюсного автомата на 3-х полюсной и вводную силовую клемму).
+                p Трехфазный навесной щит для домовладения или квартиры.
+                p Данная модель - это комплексное решение для организации электроснабжения в Вашем жилье с большим запасом "на будущее".
+                p Каждая фаза защищена отдельным реле от перепада напряжения, Нагрузка целиком защищена от утечек, также установлены диф.автоматы для отдельного подключения оборудования, требующего максимальной защиты, например бойлер, стиральная машина и т.д.
+                p Также предусмотрена возможность подключения 3-х фазного потребителя, например варочная панель или какое-то оборудование.
+                p Щит имеет возможность для расширения еще на 18 портов, что очень перспективно. Вы будете всегда иметь резервное место, чтобы добавить автоматы в случае необходимости.

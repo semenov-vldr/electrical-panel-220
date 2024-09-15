@@ -1,0 +1,44 @@
+/* --- Модальное окно с Формой --- */
+.form-popup
+  width: calc(100% - 32px)
+  max-width: 768px
+  margin: auto
+  overflow-y: auto
+  outline: none
+  transition: $transition
+  flex-direction: column
+  background-color: #fff
+  padding: 24px 24px 48px
+  border: 1px solid $black
+  @include mobile
+    padding: 8px 16px 16px
+  &[open]
+    display: flex
+    animation: open 0.5s forwards
+  &::backdrop
+    background-color: rgba(#000, 0.5)
+
+
+  &__close
+    font-size: 24px
+    font-weight: 600
+    margin-left: auto
+    @include mobile
+      font-size: 18px
+
+  &__body
+    display: flex
+    flex-direction: column
+    align-items: center
+
+  &__header
+    margin-bottom: 32px
+
+  &__title
+    font-family: "ProstoOne", sans-serif
+    @include fontSize(24, 36)
+    text-align: center
+
+
+  .form__submit
+    width: 100%

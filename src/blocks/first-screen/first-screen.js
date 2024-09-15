@@ -29,4 +29,13 @@ if (firstScreen) {
     }, 1000);
   };
 
+
+  // Очистка из localStorage данных о первом экране
+  const footerDetails = document.querySelector(".footer__details");
+  if (footerDetails) {
+    footerDetails.addEventListener("click", () => {
+      window.localStorage.removeItem('firstScreen');
+    });
+  }
+
 }

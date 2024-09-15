@@ -37,4 +37,34 @@ if (filter) {
   };
 
 
+  // ---- Сортировка карточек ----
+  const filterSort = filter.querySelector(".filter__item-sort");
+  const mainCatalog = document.querySelector(".main-catalog__grid");
+  const cards = mainCatalog.querySelectorAll(".card");
+
+  // Сначала дешевле
+  const sortingCheaperProductCards = Array.from(cards).sort((a, b) => {
+    return +a.dataset.price - +b.dataset.price;
+  });
+
+  // Сначала дороже
+  const sortingExpensiveProductCards = Array.from(cards).sort((a, b) => {
+    return +b.dataset.price - +a.dataset.price;
+  });
+
+  // Функция сортировки и обновления порядка карточек
+  function sortingCards () {
+    mainCatalog.replaceChildren();
+    const selectedSort = filterSort.querySelector("input:checked").value;
+
+    const sortingValue = {
+      cheap : sortingCheaperProductCards,
+      expensive: sortingExpensiveProductCards,
+      popular: cards,
+    }[selectedSort];
+
+    sortingValue.forEach(card => mainCatalog.appendChild(card));
+  };
+
+  filterSort.addEventListener("change", sortingCards);
 }

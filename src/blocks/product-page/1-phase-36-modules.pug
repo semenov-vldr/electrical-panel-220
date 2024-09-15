@@ -1,75 +1,75 @@
+- const folder = "17-36м1рРН";
+
 section.product-page
 
     .product-page__container.container.v-line
-
-        a.product-page__back(href="catalog.html" title="К странице Каталога")
-            img(src="./assets/img/icons/arrow-back.svg")
-
-        h1.product-page__title.ff-decor Электрощит однофазный&nbsp;24&nbsp;модуля
-
+        +productPageBack
+        h1.product-page__title.ff-decor Электрощит однофазный&nbsp;36&nbsp;модулей
 
         // ------ Slider ------
         // dekraft
         .product-page__slider(data-company="dekraft")
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/01.jpg")
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/02.jpg")
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/03.jpg")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/01.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/02.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/03.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/04.jpg`)
                 .swiper-pagination
 
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/01.jpg")
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/02.jpg")
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/03.jpg")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/01.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/02.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/03.jpg`)
+                    img.swiper-slide(src=`./assets/img/products/${folder}/04.jpg`)
 
 
         // abb
         .product-page__slider.scheme(data-company="abb" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/abb.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/abb.png`)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/abb.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/abb.png`)
 
         // chint
         .product-page__slider.scheme(data-company="chint" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/chint.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/chint.png`)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/chint.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/chint.png`)
 
 
         // iek
         .product-page__slider.scheme(data-company="iek" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/iek.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/iek.png`)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/iek.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/iek.png`)
 
 
         // keaz
         .product-page__slider.scheme(data-company="keaz" hidden)
             .swiper-top
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/keaz.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/keaz.png`)
                 .swiper-pagination
             .swiper-thumbs
                 .swiper-wrapper
-                    img.swiper-slide(src="./assets/img/products/1-24m1p/keaz.png")
+                    img.swiper-slide(src=`./assets/img/products/${folder}/keaz.png`)
 
         // ------ Slider END ------
 
-        - const modif = "24m1p";
+        - const modif = "36м1рРН";
         +productPageBuy(objPrices[modif].dekraft)
         .product-page__modifications
             //--- Производитель комплектующих ---
@@ -80,37 +80,31 @@ section.product-page
             +productPageLoop
 
         .product-page__data
+        .product-page__data
             +productPageDataTitles
 
             .product-page__params
                 dl.product-page__params-item
                     dt Степень защиты
-                    dd IP 43
+                    dd IP 42
                 dl.product-page__params-item
                     dt Количество модулей
-                    dd 24
+                    dd 36
                 dl.product-page__params-item
                     dt Количество рядов
-                    dd 2
+                    dd 3
                 dl.product-page__params-item
                     dt Ширина, мм
                     dd 290
                 dl.product-page__params-item
                     dt Высота, мм
-                    dd 385
+                    dd 535
                 dl.product-page__params-item
                     dt Глубина, мм
                     dd 110
 
 
             .product-page__desc
-                p Однофазный встраиваемый щит в сборе. Адаптирован под типовую 2-х комнатную квартиру, предусмотрены основные потребители, защищенные от скачков напряжения при помощи высокоэффективного УЗМ (Устройство Защитное Многофункциональное), от утечки защищает УЗО.
+                p Однофазный встраиваемый щит в сборе. Расширенная версия модуля на 36 модулей. Адаптирован под типовую 3-х комнатную квартиру, дом, предусмотрены основные потребители, защищенные от скачков напряжения при помощи высокоэффективного УЗМ (Устройство Защитное Многофункциональное), от утечки защищает УЗО.
                 p Автоматика будет выполнена на выбранной компонентной базе ("Комплектующие"), соблюдена селективность электрической схемы. Максимально функциональный щит для Вашего удобства, все соединения промаркированы.
                 p Приложенная электрическая схема и инструкция по установке помогут выполнить работу по монтажу щита самостоятельно даже без специальных навыков.
-                p В щите предусмотрено подключение следующих потребителей:
-                ol
-                    li Индукционная варочная панель
-                    li Микроволновка
-                    li Холодильник
-                    li 8 силовых групп свободного назначения
-                    li Резервный автомат

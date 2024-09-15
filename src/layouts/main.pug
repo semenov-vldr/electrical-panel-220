@@ -1,7 +1,8 @@
 include ../blocks/mixins
+include ../blocks/_items/obj-prices
 
 block variables
-  - var classMain = classMain
+  - const classMain = classMain
 
 doctype html
 html(lang="ru-RU")
@@ -12,7 +13,9 @@ html(lang="ru-RU")
             block content
         include ../blocks/footer/footer
         include ../blocks/first-screen/first-screen
+        include ../blocks/popup/popup
     script(src="./assets/scripts/libs.min.js")
     script(src="./assets/scripts/main.js" type="module")
+
     script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js")
     block script
