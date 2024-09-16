@@ -1,3 +1,5 @@
+include ../_items/data-cards
+
 .v-line-inner-block
     .v-line-inner.container
 
@@ -6,47 +8,5 @@ section.catalog.catalog--similar
         h2.title-section Похожие
 
         .catalog__list.swiper-wrapper
+            +randerSlidesCards(dataCards, 1, 2, 3)
 
-            a.card.swiper-slide(href="")
-                .card__img
-                    img(src="./assets/img/catalog/01.jpg")
-                .card__data
-                    h3.card__caption Электрощит однофазный&nbsp;24&nbsp;модуля
-                    span.card__price 22 801 ₽
-                    ul.card__params
-                        li.card__params-item
-                            span Количество фаз
-                            span 1
-                        li.card__params-item
-                            span Количество модулей
-                            span 24
-
-
-            a.card.swiper-slide(href="")
-                .card__img
-                    img(src="./assets/img/catalog/01.jpg")
-                .card__data
-                    h3.card__caption Электрощит однофазный&nbsp;24&nbsp;модуля
-                    span.card__price 22 801 ₽
-                    ul.card__params
-                        li.card__params-item
-                            span Количество фаз
-                            span 1
-                        li.card__params-item
-                            span Количество модулей
-                            span 24
-
-
-            a.card.swiper-slide(href="")
-                .card__img
-                    img(src="./assets/img/catalog/01.jpg")
-                .card__data
-                    h3.card__caption Электрощит однофазный&nbsp;24&nbsp;модуля
-                    span.card__price 22 801 ₽
-                    ul.card__params
-                        li.card__params-item
-                            span Количество фаз
-                            span 1
-                        li.card__params-item
-                            span Количество модулей
-                            span 24

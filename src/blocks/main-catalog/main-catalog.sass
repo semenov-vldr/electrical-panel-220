@@ -13,6 +13,10 @@
     @media (max-width: 540px)
       grid-template-columns: 1fr
 
+    &:hover > :not(:hover) img
+      //filter: brightness(0.6)
+      filter: blur(4px)
+
   .v-line-inner::before
     left: calc(33.333% - 5px)
     top: -15px
