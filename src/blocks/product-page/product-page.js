@@ -20,7 +20,6 @@ function createProductSlider (parent) {
       el: '.swiper-pagination',
       clickable: true,
     },
-    loop: true,
     slidesPerView: 1,
     centeredSlides: true,
     initialSlide: 0,
@@ -44,25 +43,30 @@ if (productPage) {
   const inputRadioCompanies = productPage.querySelectorAll('.product-page__companies input[type="radio"]');
 
   function formatPrice (dataPrice) {
-    console.log(dataPrice)
     productPrice.textContent = `${dataPrice.toLocaleString('ru-RU')} ₽`;
   };
 
   inputRadioCompanies.forEach(company => {
     company.addEventListener("change", () => {
-
       if (company.checked) {
         // Установка цены по производителю
         formatPrice(+company.dataset.price);
 
         // Установка слайдера в соответствии с производителем
         productSliders.forEach(slider => {
-          slider.hidden = slider.dataset.company !== company.value
+          slider.hidden = slider.dataset.company !== company.value;
         });
       }
     });
   });
 
+
+  // Создание галереи слайдера
+  Fancybox.bind('[data-fancybox]', {});
+  const swiperTop = productPage.querySelector(".product-page__slider .swiper-top");
+  const swiperTopImages = Array.from( swiperTop.querySelectorAll("img") );
+  const imgSet = new Set(swiperTopImages.map(topImg => ( {src: topImg.src} )));
+  swiperTop.addEventListener("click", () => Fancybox.show(imgSet));
 
 }
 
