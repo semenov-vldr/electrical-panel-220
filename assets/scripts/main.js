@@ -252,7 +252,6 @@ function createProductSlider(parent) {
       el: '.swiper-pagination',
       clickable: true
     },
-    loop: true,
     slidesPerView: 1,
     centeredSlides: true,
     initialSlide: 0,
@@ -267,7 +266,6 @@ function createProductSlider(parent) {
 }
 if (productPage) {
   var formatPrice = function formatPrice(dataPrice) {
-    console.log(dataPrice);
     productPrice.textContent = "".concat(dataPrice.toLocaleString('ru-RU'), " \u20BD");
   };
   var productSliders = productPage.querySelectorAll('.product-page__slider');
@@ -287,6 +285,19 @@ if (productPage) {
         });
       }
     });
+  });
+
+  // Создание галереи слайдера
+  Fancybox.bind('[data-fancybox]', {});
+  var swiperTop = productPage.querySelector(".product-page__slider .swiper-top");
+  var swiperTopImages = Array.from(swiperTop.querySelectorAll("img"));
+  var imgSet = new Set(swiperTopImages.map(function (topImg) {
+    return {
+      src: topImg.src
+    };
+  }));
+  swiperTop.addEventListener("click", function () {
+    return Fancybox.show(imgSet);
   });
 }
 "use strict";
