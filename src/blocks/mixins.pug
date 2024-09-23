@@ -33,6 +33,31 @@ mixin randerSlidesCards(dataList, ...ids)
                           span= card.modules
 
 
+mixin similarSlides(dataList, ...ids)
+    .v-line-inner-block
+        .v-line-inner.container
+    section.catalog.catalog--similar
+        .catalog__container.container.swiper
+            h2.title-section Похожие
+            .catalog__list.swiper-wrapper
+                  each card in dataList
+                      if (ids.includes(card.id))
+                          a.card.swiper-slide(href=card.link data-id=card.id data-phases=card.phases data-modules=card.modules data-price=card.price)
+                              .card__img
+                                  img(src= card.imgSrc)
+                              .card__data
+                                  h3.card__caption= card.caption
+                                  span.card__price= `${card.price.toLocaleString()} ₽`
+                                  ul.card__params
+                                      li.card__params-item
+                                          span Количество фаз
+                                          span= card.phases
+                                      li.card__params-item
+                                          span Количество модулей
+                                          span= card.modules
+
+
+
 mixin productPageBack
     a.product-page__back(href="catalog.html" title="К странице Каталога")
         img(src="./assets/img/icons/arrow-back.svg")
@@ -91,6 +116,21 @@ mixin productPageDataTitles
             input(type="radio" name="data" value="params" checked)
         label.product-page__data-title Описание
             input(type="radio" name="data" value="desc")
+
+
+
+//mixin catalogSimilar(...ids)
+//    include ../blocks/_items/data-cards
+//
+//    .v-line-inner-block
+//        .v-line-inner.container
+//
+//    section.catalog.catalog--similar
+//        .catalog__container.container.swiper
+//            h2.title-section Похожие
+//
+//            .catalog__list.swiper-wrapper
+//                +randerSlidesCards(dataCards)
 
 
 

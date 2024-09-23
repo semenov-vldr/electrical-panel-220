@@ -1,12 +1,15 @@
 extends ../layouts/main
 
 block variables
-  - var title = "Инженерные решения.рф | Электрощит трехфазный 54 модуля"
+  - let title = 'Электрощит трехфазный 54 модуля'
   - classMain = "product"
 
 block content
     include ../blocks/product-page/3-phase-54-modules
-    include ../blocks/catalog/catalog
+
+    include ../blocks/_items/data-cards
+    +similarSlides(dataCards, 4, 5, 6)
+
     include ../blocks/reviews/reviews
     include ../blocks/feedback/feedback
     include ../blocks/assembly/assembly

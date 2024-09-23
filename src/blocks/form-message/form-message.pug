@@ -1,0 +1,9 @@
+.form__message.form__message--success
+    h2.form__message-title.ff-decor Спасибо!
+    p.form__message-text В течении 30 минут с вами свяжется менеджер для оформления заказа.
+    button.form__message-cancel.button.button--accent(type="button" onclick="window.formPopup.close()") Хорошо
+
+.form__message.form__message--error
+    h2.form__message-title.ff-decor Ошибка отправки!
+    p.form__message-text При отправке формы произошла ошибка. <br> Пожалуйста свяжитесь с нами по телефону #[a(href="tel:+79999999999") +7 (999)-999-99-99]
+    button.form__message-cancel.button.button--accent(type="button" onclick="window.formPopup.close()") Хорошо

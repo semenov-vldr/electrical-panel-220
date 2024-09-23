@@ -60,6 +60,12 @@ if (productPage) {
     });
   });
 
+  const productCase = document.querySelector(".product-page__case");
+  productCase.addEventListener("change", () => {
+    const checked = productCase.querySelector("input:checked");
+  });
+
+
 
   // Создание галереи слайдера
   Fancybox.bind('[data-fancybox]', {});
