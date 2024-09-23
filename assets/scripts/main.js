@@ -1,8 +1,8 @@
 "use strict";
 
 // Отправка данных формы в Телеграм
-var TOKEN = "6388509099:AAFIQyVlZ4MapEiXhH2vQJh8CyZFgFoJ_mA";
-var CHAT_ID = "-1002008090284";
+var TOKEN = "7222927734:AAHS5zF9cSpVSdlB-bJY15hQGySIgO3nu3U";
+var CHAT_ID = "-1002270002046";
 var URL_API = "https://api.telegram.org/bot".concat(TOKEN, "/sendMessage");
 var forms = document.querySelectorAll("form.form");
 if (forms) {
@@ -12,33 +12,60 @@ if (forms) {
 }
 function sendMessageTelegram(evt) {
   evt.preventDefault();
-  var typeConnection = this.querySelector(".form__connection-fieldset input[type='radio']:checked");
-  var successFormMessage = this.querySelector('.form__message--success');
-  var errorFormMessage = this.querySelector('.form__message--error');
-  function formSuccess() {
-    successFormMessage.classList.add('js-message-active');
-  }
-  function formError() {
-    errorFormMessage.classList.add('js-message-active');
-  }
-  var message = "<b>\u0417\u0430\u044F\u0432\u043A\u0430 \u0441 \u0441\u0430\u0439\u0442\u0430 ***:</b>\n";
-  message += "<b>\u0418\u043C\u044F:</b> ".concat(this.name.value, "\n");
+  var target = this; // form
+  var typeConnection = target.querySelector(".form__connection input[type='radio']:checked");
+  var formPopup = target.closest("#formPopup");
+  var message = "<b>\u0418\u043C\u044F:</b> ".concat(this.name.value, "\n");
   message += "<b>\u0422\u0435\u043B\u0435\u0444\u043E\u043D:</b> ".concat(this.phone.value, "\n");
+  if (formPopup) {
+    var popupProductName = formPopup.querySelector(".form-popup__product-name");
+    var popupProductPrice = formPopup.querySelector(".form-popup__product-price");
+    var popupProductCompany = formPopup.querySelector(".form-popup__product-company");
+    var popupProductCase = formPopup.querySelector(".form-popup__mod-item--case input:checked");
+    var popupProductLoop = formPopup.querySelector(".form-popup__mod-item--loop input:checked");
+    message += "<b>\u0429\u0438\u0442:</b> ".concat(popupProductName.textContent, "\n");
+    message += "<b>\u0426\u0435\u043D\u0430:</b> ".concat(popupProductPrice.textContent, "\n");
+    message += "<b>\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u044C:</b> ".concat(popupProductCompany.textContent, "\n");
+    message += "<b>\u041A\u043E\u0440\u043F\u0443\u0441:</b> ".concat(popupProductCase.value, "\n");
+    message += "<b>\u041F\u0435\u0442\u043B\u044F:</b> ".concat(popupProductLoop.value, "\n");
+  }
   message += "<b>\u0421\u043F\u043E\u0441\u043E\u0431 \u0441\u0432\u044F\u0437\u0438:</b> ".concat(typeConnection.value, "\n");
+  var formPopupBody = formPopup.querySelector('.form-popup__body');
+  var successFormMessage = formPopup.querySelector('.form__message--success');
+  var errorFormMessage = formPopup.querySelector('.form__message--error');
+  function resetPopupAfterSubmit(messageSubmit) {
+    formPopup.addEventListener("close", function () {
+      formPopupBody.classList.remove("js-hidden");
+      messageSubmit.classList.remove("js-active");
+    });
+  }
+  ;
+  function formSuccess() {
+    formPopupBody.classList.add("js-hidden");
+    successFormMessage.classList.add("js-active");
+    resetPopupAfterSubmit(successFormMessage);
+  }
+  ;
+  function formError() {
+    formPopupBody.classList.add("js-hidden");
+    errorFormMessage.classList.add("js-active");
+    resetPopupAfterSubmit(errorFormMessage);
+  }
+  ;
   axios.post(URL_API, {
     chat_id: CHAT_ID,
     parse_mode: "html",
     text: message
   }).then(function () {
     console.log("Заявка отправлена");
-    //formSuccess();
+    formSuccess();
   })["catch"](function (err) {
     console.warn(err);
-    //formError();
+    formError();
   })["finally"](function () {
     console.log("Конец");
   });
-  this.reset();
+  target.reset();
 }
 ;
 "use strict";
@@ -231,6 +258,30 @@ function hideLoader() {
 ;
 window.addEventListener('load', hideLoader);
 "use strict";
+
+function popupOpen() {
+  var formPopup = document.querySelector(".form-popup");
+  if (!formPopup) return;
+  var popupProductName = formPopup.querySelector(".form-popup__product-name");
+  var popupProductPrice = formPopup.querySelector(".form-popup__product-price");
+  var popupProductCompany = formPopup.querySelector(".form-popup__product-company");
+  var popupProductCase = formPopup.querySelector(".form-popup__mod-item--case");
+  var popupProductLoop = formPopup.querySelector(".form-popup__mod-item--loop");
+  var productPage = document.querySelector(".product-page");
+  var productTitle = productPage.querySelector(".product-page__title");
+  var productPrice = productPage.querySelector(".product-page__price");
+  var productCompany = productPage.querySelector(".product-page__companies input[type='radio']:checked");
+  var productCase = productPage.querySelector(".product-page__case input[type='radio']:checked");
+  var productLoop = productPage.querySelector(".product-page__loop input[type='radio']:checked");
+  popupProductName.textContent = productTitle.textContent;
+  popupProductPrice.textContent = productPrice.textContent;
+  popupProductCompany.textContent = productCompany.value;
+  popupProductCase.querySelector("input[value=".concat(productCase.value, "]")).checked = true;
+  popupProductLoop.querySelector("input[value=".concat(productLoop.value, "]")).checked = true;
+}
+;
+var popupOpenBtn = document.querySelector(".product-page__buy-button");
+popupOpenBtn && popupOpenBtn.addEventListener("click", popupOpen);
 "use strict";
 
 var productPage = document.querySelector(".product-page");
@@ -285,6 +336,10 @@ if (productPage) {
         });
       }
     });
+  });
+  var productCase = document.querySelector(".product-page__case");
+  productCase.addEventListener("change", function () {
+    var checked = productCase.querySelector("input:checked");
   });
 
   // Создание галереи слайдера
