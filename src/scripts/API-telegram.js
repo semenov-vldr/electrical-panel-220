@@ -36,30 +36,6 @@ function sendMessageTelegram (evt) {
 
   message += `<b>Способ связи:</b> ${typeConnection.value}\n`;
 
-  const formPopupBody = formPopup.querySelector('.form-popup__body');
-  const successFormMessage = formPopup.querySelector('.form__message--success');
-  const errorFormMessage = formPopup.querySelector('.form__message--error');
-
-
-  function resetPopupAfterSubmit(messageSubmit) {
-    formPopup.addEventListener("close", () => {
-      formPopupBody.classList.remove("js-hidden");
-      messageSubmit.classList.remove("js-active");
-    });
-  };
-
-  function formSuccess () {
-    formPopupBody.classList.add("js-hidden");
-    successFormMessage.classList.add("js-active");
-    resetPopupAfterSubmit(successFormMessage);
-  };
-
-  function formError () {
-    formPopupBody.classList.add("js-hidden");
-    errorFormMessage.classList.add("js-active");
-    resetPopupAfterSubmit(errorFormMessage);
-  };
-
 
 
   axios.post(URL_API, {
@@ -79,5 +55,6 @@ function sendMessageTelegram (evt) {
       console.log("Конец");
     });
   target.reset();
+  formPopup && formPopup.close(); // Закрыть попап после отправки формы
 
 };

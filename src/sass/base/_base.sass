@@ -4,7 +4,8 @@ html
   scroll-behavior: smooth
   color: #000
   font-variant-numeric: lining-nums
-  &.js-no-scroll
+  &.js-no-scroll,
+  &:has(dialog[open])
     overflow-y: hidden
 
 
