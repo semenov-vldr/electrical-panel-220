@@ -30,28 +30,6 @@ function sendMessageTelegram(evt) {
     message += "<b>\u041F\u0435\u0442\u043B\u044F:</b> ".concat(popupProductLoop.value, "\n");
   }
   message += "<b>\u0421\u043F\u043E\u0441\u043E\u0431 \u0441\u0432\u044F\u0437\u0438:</b> ".concat(typeConnection.value, "\n");
-  var formPopupBody = formPopup.querySelector('.form-popup__body');
-  var successFormMessage = formPopup.querySelector('.form__message--success');
-  var errorFormMessage = formPopup.querySelector('.form__message--error');
-  function resetPopupAfterSubmit(messageSubmit) {
-    formPopup.addEventListener("close", function () {
-      formPopupBody.classList.remove("js-hidden");
-      messageSubmit.classList.remove("js-active");
-    });
-  }
-  ;
-  function formSuccess() {
-    formPopupBody.classList.add("js-hidden");
-    successFormMessage.classList.add("js-active");
-    resetPopupAfterSubmit(successFormMessage);
-  }
-  ;
-  function formError() {
-    formPopupBody.classList.add("js-hidden");
-    errorFormMessage.classList.add("js-active");
-    resetPopupAfterSubmit(errorFormMessage);
-  }
-  ;
   axios.post(URL_API, {
     chat_id: CHAT_ID,
     parse_mode: "html",
@@ -66,7 +44,9 @@ function sendMessageTelegram(evt) {
     console.log("Конец");
   });
   target.reset();
+  formPopup && formPopup.close(); // Закрыть попап после отправки формы
 }
+
 ;
 "use strict";
 
@@ -212,6 +192,30 @@ if (footerContainer) {
 
 var maskTel = new Inputmask("+7 (999) 999-99-99");
 maskTel.mask("[type='tel']");
+"use strict";
+
+function formSuccess() {
+  var formMessage = document.querySelector('#formMessage');
+  if (!formMessage) return;
+  var successFormMessage = formMessage.querySelector('.form-message__item--success');
+  formMessage.showModal();
+  successFormMessage.hidden = false;
+  formMessage.addEventListener("close", function () {
+    successFormMessage.hidden = true;
+  });
+}
+;
+function formError() {
+  var formMessage = document.querySelector('#formMessage');
+  if (!formMessage) return;
+  var errorFormMessage = formMessage.querySelector('.form-message__item--error');
+  formMessage.showModal();
+  errorFormMessage.hidden = false;
+  formMessage.addEventListener("close", function () {
+    errorFormMessage.hidden = true;
+  });
+}
+;
 "use strict";
 
 function mobileNav() {
