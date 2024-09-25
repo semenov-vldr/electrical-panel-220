@@ -9,7 +9,5 @@ function closeOnBackDropClick({ currentTarget, target }) {
 const dialogElements = document.querySelectorAll("dialog");
 
 if (dialogElements) {
-  dialogElements.forEach(dialogElement => {
-    dialogElement.addEventListener("click", closeOnBackDropClick);
-  });
+  dialogElements.forEach(dialogElement => dialogElement.onclick = closeOnBackDropClick);
 }

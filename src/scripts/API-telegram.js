@@ -8,18 +8,18 @@ if (forms) {
   forms.forEach(form => form.addEventListener("submit", sendMessageTelegram));
 }
 
+
 function sendMessageTelegram (evt) {
   evt.preventDefault();
 
   const target = this; // form
-  const typeConnection = target.querySelector(".form__connection input[type='radio']:checked");
+
+  let message = `<b>Имя:</b> ${target.name.value}\n`;
+  message += `<b>Телефон:</b> ${target.phone.value}\n`;
+  message += `<b>Способ связи:</b> ${target.connection.value}\n`;
+
+  // Добавление данных в заявку со страницы щита
   const formPopup = target.closest("#formPopup");
-
-  let message = `<b>Имя:</b> ${this.name.value}\n`;
-  message += `<b>Телефон:</b> ${this.phone.value}\n`;
-
-
-
   if (formPopup) {
     const popupProductName = formPopup.querySelector(".form-popup__product-name");
     const popupProductPrice = formPopup.querySelector(".form-popup__product-price");
@@ -32,9 +32,17 @@ function sendMessageTelegram (evt) {
     message += `<b>Производитель:</b> ${popupProductCompany.textContent}\n`;
     message += `<b>Корпус:</b> ${popupProductCase.value}\n`;
     message += `<b>Петля:</b> ${popupProductLoop.value}\n`;
-  }
+  };
 
-  message += `<b>Способ связи:</b> ${typeConnection.value}\n`;
+
+  const brief = target.closest("#brief");
+  if (brief) {
+    const inputList = brief.querySelectorAll("input:checked");
+    message += `<b>Щит на заказ:</b>\n`;
+    inputList.forEach(input => {
+      message += `<b>${input.name}:</b> ${input.value}\n`;
+    });
+  };
 
 
 
@@ -45,16 +53,18 @@ function sendMessageTelegram (evt) {
   })
     .then( () => {
       console.log("Заявка отправлена");
-      formSuccess();
+      showFormMessage("success");
     })
     .catch(err => {
       console.warn(err);
-      formError();
+      showFormMessage("error");
     })
     .finally(() => {
       console.log("Конец");
     });
   target.reset();
-  formPopup && formPopup.close(); // Закрыть попап после отправки формы
-
+  // Закрыть попап после отправки формы
+  formPopup && formPopup.close();
+  // После заполнения брифа переход на главную стр
+  if (brief) setTimeout(() => window.location.href = "/", 5000);
 };
