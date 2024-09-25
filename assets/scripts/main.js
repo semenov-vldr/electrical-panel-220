@@ -13,10 +13,13 @@ if (forms) {
 function sendMessageTelegram(evt) {
   evt.preventDefault();
   var target = this; // form
-  var typeConnection = target.querySelector(".form__connection input[type='radio']:checked");
+
+  var message = "<b>\u0418\u043C\u044F:</b> ".concat(target.name.value, "\n");
+  message += "<b>\u0422\u0435\u043B\u0435\u0444\u043E\u043D:</b> ".concat(target.phone.value, "\n");
+  message += "<b>\u0421\u043F\u043E\u0441\u043E\u0431 \u0441\u0432\u044F\u0437\u0438:</b> ".concat(target.connection.value, "\n");
+
+  // Добавление данных в заявку со страницы щита
   var formPopup = target.closest("#formPopup");
-  var message = "<b>\u0418\u043C\u044F:</b> ".concat(this.name.value, "\n");
-  message += "<b>\u0422\u0435\u043B\u0435\u0444\u043E\u043D:</b> ".concat(this.phone.value, "\n");
   if (formPopup) {
     var popupProductName = formPopup.querySelector(".form-popup__product-name");
     var popupProductPrice = formPopup.querySelector(".form-popup__product-price");
@@ -29,24 +32,37 @@ function sendMessageTelegram(evt) {
     message += "<b>\u041A\u043E\u0440\u043F\u0443\u0441:</b> ".concat(popupProductCase.value, "\n");
     message += "<b>\u041F\u0435\u0442\u043B\u044F:</b> ".concat(popupProductLoop.value, "\n");
   }
-  message += "<b>\u0421\u043F\u043E\u0441\u043E\u0431 \u0441\u0432\u044F\u0437\u0438:</b> ".concat(typeConnection.value, "\n");
+  ;
+  var brief = target.closest("#brief");
+  if (brief) {
+    var inputList = brief.querySelectorAll("input:checked");
+    message += "<b>\u0429\u0438\u0442 \u043D\u0430 \u0437\u0430\u043A\u0430\u0437:</b>\n";
+    inputList.forEach(function (input) {
+      message += "<b>".concat(input.name, ":</b> ").concat(input.value, "\n");
+    });
+  }
+  ;
   axios.post(URL_API, {
     chat_id: CHAT_ID,
     parse_mode: "html",
     text: message
   }).then(function () {
     console.log("Заявка отправлена");
-    formSuccess();
+    showFormMessage("success");
   })["catch"](function (err) {
     console.warn(err);
-    formError();
+    showFormMessage("error");
   })["finally"](function () {
     console.log("Конец");
   });
   target.reset();
-  formPopup && formPopup.close(); // Закрыть попап после отправки формы
+  // Закрыть попап после отправки формы
+  formPopup && formPopup.close();
+  // После заполнения брифа переход на главную стр
+  if (brief) setTimeout(function () {
+    return window.location.href = "/";
+  }, 5000);
 }
-
 ;
 "use strict";
 
@@ -85,7 +101,7 @@ function closeOnBackDropClick(_ref) {
 var dialogElements = document.querySelectorAll("dialog");
 if (dialogElements) {
   dialogElements.forEach(function (dialogElement) {
-    dialogElement.addEventListener("click", closeOnBackDropClick);
+    return dialogElement.onclick = closeOnBackDropClick;
   });
 }
 "use strict";
@@ -194,28 +210,17 @@ var maskTel = new Inputmask("+7 (999) 999-99-99");
 maskTel.mask("[type='tel']");
 "use strict";
 
-function formSuccess() {
+function showFormMessage(type) {
+  // success || error
   var formMessage = document.querySelector('#formMessage');
   if (!formMessage) return;
-  var successFormMessage = formMessage.querySelector('.form-message__item--success');
+  var messageEl = formMessage.querySelector(".form-message__item--".concat(type));
   formMessage.showModal();
-  successFormMessage.hidden = false;
+  messageEl.hidden = false;
   formMessage.addEventListener("close", function () {
-    successFormMessage.hidden = true;
+    messageEl.hidden = true;
   });
 }
-;
-function formError() {
-  var formMessage = document.querySelector('#formMessage');
-  if (!formMessage) return;
-  var errorFormMessage = formMessage.querySelector('.form-message__item--error');
-  formMessage.showModal();
-  errorFormMessage.hidden = false;
-  formMessage.addEventListener("close", function () {
-    errorFormMessage.hidden = true;
-  });
-}
-;
 "use strict";
 
 function mobileNav() {
@@ -247,7 +252,6 @@ function mobileNav() {
   });
 }
 mobileNav();
-"use strict";
 "use strict";
 
 function hideLoader() {
