@@ -21,16 +21,16 @@ function sendMessageTelegram(evt) {
   // Добавление данных в заявку со страницы щита
   var formPopup = target.closest("#formPopup");
   if (formPopup) {
-    var popupProductName = formPopup.querySelector(".form-popup__product-name");
-    var popupProductPrice = formPopup.querySelector(".form-popup__product-price");
-    var popupProductCompany = formPopup.querySelector(".form-popup__product-company");
-    var popupProductCase = formPopup.querySelector(".form-popup__mod-item--case input:checked");
-    var popupProductLoop = formPopup.querySelector(".form-popup__mod-item--loop input:checked");
-    message += "<b>\u0429\u0438\u0442:</b> ".concat(popupProductName.textContent, "\n");
-    message += "<b>\u0426\u0435\u043D\u0430:</b> ".concat(popupProductPrice.textContent, "\n");
-    message += "<b>\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u044C:</b> ".concat(popupProductCompany.textContent, "\n");
-    message += "<b>\u041A\u043E\u0440\u043F\u0443\u0441:</b> ".concat(popupProductCase.value, "\n");
-    message += "<b>\u041F\u0435\u0442\u043B\u044F:</b> ".concat(popupProductLoop.value, "\n");
+    var popupProductName = formPopup.querySelector(".form-popup__product-name").textContent.replace("Электрощит", "");
+    var popupProductPrice = formPopup.querySelector(".form-popup__product-price").textContent;
+    var popupProductCompany = formPopup.querySelector(".form-popup__mod-item--company span").textContent;
+    var popupProductCase = formPopup.querySelector(".form-popup__mod-item--case span").textContent;
+    var popupProductLoop = formPopup.querySelector(".form-popup__mod-item--loop span").textContent;
+    message += "<b>\u0429\u0438\u0442:</b> ".concat(popupProductName, "\n");
+    message += "<b>\u0426\u0435\u043D\u0430:</b> ".concat(popupProductPrice, "\n");
+    message += "<b>\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u044C:</b> ".concat(popupProductCompany, "\n");
+    message += "<b>\u041A\u043E\u0440\u043F\u0443\u0441:</b> ".concat(popupProductCase, "\n");
+    message += "<b>\u041F\u0435\u0442\u043B\u044F:</b> ".concat(popupProductLoop, "\n");
   }
   ;
   var brief = target.closest("#brief");
@@ -272,9 +272,9 @@ function popupOpen() {
   if (!formPopup) return;
   var popupProductName = formPopup.querySelector(".form-popup__product-name");
   var popupProductPrice = formPopup.querySelector(".form-popup__product-price");
-  var popupProductCompany = formPopup.querySelector(".form-popup__product-company");
-  var popupProductCase = formPopup.querySelector(".form-popup__mod-item--case");
-  var popupProductLoop = formPopup.querySelector(".form-popup__mod-item--loop");
+  var popupProductCompany = formPopup.querySelector(".form-popup__mod-item--company span");
+  var popupProductCase = formPopup.querySelector(".form-popup__mod-item--case span");
+  var popupProductLoop = formPopup.querySelector(".form-popup__mod-item--loop span");
   var productPage = document.querySelector(".product-page");
   var productTitle = productPage.querySelector(".product-page__title");
   var productPrice = productPage.querySelector(".product-page__price");
@@ -284,8 +284,8 @@ function popupOpen() {
   popupProductName.textContent = productTitle.textContent;
   popupProductPrice.textContent = productPrice.textContent;
   popupProductCompany.textContent = productCompany.value;
-  popupProductCase.querySelector("input[value=".concat(productCase.value, "]")).checked = true;
-  popupProductLoop.querySelector("input[value=".concat(productLoop.value, "]")).checked = true;
+  popupProductCase.textContent = productCase.value;
+  popupProductLoop.textContent = productLoop.value;
 }
 ;
 var popupOpenBtn = document.querySelector(".product-page__buy-button");
