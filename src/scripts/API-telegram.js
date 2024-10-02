@@ -21,17 +21,17 @@ function sendMessageTelegram (evt) {
   // Добавление данных в заявку со страницы щита
   const formPopup = target.closest("#formPopup");
   if (formPopup) {
-    const popupProductName = formPopup.querySelector(".form-popup__product-name");
-    const popupProductPrice = formPopup.querySelector(".form-popup__product-price");
-    const popupProductCompany = formPopup.querySelector(".form-popup__product-company");
-    const popupProductCase = formPopup.querySelector(".form-popup__mod-item--case input:checked");
-    const popupProductLoop = formPopup.querySelector(".form-popup__mod-item--loop input:checked");
+    const popupProductName = formPopup.querySelector(".form-popup__product-name").textContent.replace("Электрощит", "");
+    const popupProductPrice = formPopup.querySelector(".form-popup__product-price").textContent;
+    const popupProductCompany = formPopup.querySelector(".form-popup__mod-item--company span").textContent;
+    const popupProductCase = formPopup.querySelector(".form-popup__mod-item--case span").textContent;
+    const popupProductLoop = formPopup.querySelector(".form-popup__mod-item--loop span").textContent;
 
-    message += `<b>Щит:</b> ${popupProductName.textContent}\n`;
-    message += `<b>Цена:</b> ${popupProductPrice.textContent}\n`;
-    message += `<b>Производитель:</b> ${popupProductCompany.textContent}\n`;
-    message += `<b>Корпус:</b> ${popupProductCase.value}\n`;
-    message += `<b>Петля:</b> ${popupProductLoop.value}\n`;
+    message += `<b>Щит:</b> ${popupProductName}\n`;
+    message += `<b>Цена:</b> ${popupProductPrice}\n`;
+    message += `<b>Производитель:</b> ${popupProductCompany}\n`;
+    message += `<b>Корпус:</b> ${popupProductCase}\n`;
+    message += `<b>Петля:</b> ${popupProductLoop}\n`;
   };
 
 

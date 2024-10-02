@@ -20,7 +20,9 @@
       gap: 14px
 
   &__item:has(input:checked)
-    outline-color: $accent
+    outline-color: $black
+  &__item:has(input:checked) summary
+    color: $black
 
   &__item,
   &__item-sort
@@ -30,11 +32,11 @@
     font-size: 20px
     padding: 12px
     line-height: 1
-    outline: 1px solid rgba(#000, 0.4)
+    outline: 1px solid rgba($black, 0.4)
     background-color: $bg
     z-index: 1
     &:hover
-      background-color: rgba(#000, 0.05)
+      background-color: rgba($black, 0.05)
     @include mobile
       font-size: 16px
       padding: 8px
@@ -42,8 +44,10 @@
 
     &[open]
       outline-color: $black
-      background-color: rgba(#000, 0.05)
+      background-color: rgba($black, 0.05)
       z-index: 2
+    &[open] summary
+      color: $black
     &[open] summary::after
       transform: rotate(0)
 
@@ -57,6 +61,7 @@
       gap: 8px
       white-space: nowrap
       list-style: none
+      color: rgba($black, 0.7)
       &::-webkit-details-marker
         display: none
       &::after

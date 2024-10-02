@@ -3,25 +3,18 @@ dialog.form-popup#formPopup
 
     .form-popup__body
         .form-popup__header
-            h2.form-popup__title Новый заказ
+            h2.form-popup__title.ff-decor Новый заказ
             span.form-popup__product-name
             span.form-popup__product-price
-            span.form-popup__product-company
         .form-popup__mod
+            .form-popup__mod-item.form-popup__mod-item--company
+                h3 Комплектующие:
+                span
             .form-popup__mod-item.form-popup__mod-item--case
-                h3 Корпус
-                fieldset
-                    label Встраеваемый
-                        input(type="radio" name="case" value="Встраеваемый")
-                    label Накладной
-                        input(type="radio" name="case" value="Накладной")
-
+                h3 Корпус:
+                span
             .form-popup__mod-item.form-popup__mod-item--loop
-                h3 Корпус
-                fieldset
-                    label Слева
-                        input(type="radio" name="loop" value="Слева")
-                    label Справа
-                        input(type="radio" name="loop" value="Справа")
+                h3 Петли:
+                span
 
         include ../form/form

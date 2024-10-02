@@ -4,9 +4,9 @@ function popupOpen() {
 
   const popupProductName = formPopup.querySelector(".form-popup__product-name");
   const popupProductPrice = formPopup.querySelector(".form-popup__product-price");
-  const popupProductCompany = formPopup.querySelector(".form-popup__product-company");
-  const popupProductCase = formPopup.querySelector(".form-popup__mod-item--case");
-  const popupProductLoop = formPopup.querySelector(".form-popup__mod-item--loop");
+  const popupProductCompany = formPopup.querySelector(".form-popup__mod-item--company span");
+  const popupProductCase = formPopup.querySelector(".form-popup__mod-item--case span");
+  const popupProductLoop = formPopup.querySelector(".form-popup__mod-item--loop span");
 
   const productPage = document.querySelector(".product-page");
   const productTitle = productPage.querySelector(".product-page__title");
@@ -18,10 +18,8 @@ function popupOpen() {
   popupProductName.textContent = productTitle.textContent;
   popupProductPrice.textContent = productPrice.textContent;
   popupProductCompany.textContent = productCompany.value;
-
-  popupProductCase.querySelector(`input[value=${productCase.value}]`).checked = true;
-  popupProductLoop.querySelector(`input[value=${productLoop.value}]`).checked = true;
-
+  popupProductCase.textContent = productCase.value;
+  popupProductLoop.textContent = productLoop.value;
 };
 
 const popupOpenBtn = document.querySelector(".product-page__buy-button");
