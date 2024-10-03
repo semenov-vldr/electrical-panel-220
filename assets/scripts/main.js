@@ -113,10 +113,26 @@ if (images) {
     return img.setAttribute("loading", "lazy");
   });
 }
-// const player = videojs('.video-js', {
-//   autoplay: false,
-//   fluid: true
-// });
+// const assembly = document.querySelector("#assembly");
+// if (assembly) {
+//   const videoSource = assembly.querySelector(".assembly__video source");
+//
+//   const observer = new IntersectionObserver(loadingVideo,
+//     {
+//       threshold: 0.5
+//     });
+//
+//   function loadingVideo(entry) {
+//
+//     console.log(videoSource.dataset.src);
+//     videoSource.src = videoSource.dataset.src;
+//
+//
+//     if (entry.isIntersecting) observer.unobserve(entry.target);
+//   }
+//
+//   observer.observe(assembly);
+// }
 "use strict";
 "use strict";
 
@@ -170,6 +186,7 @@ if (firstScreen) {
   var firstScreenLS = window.localStorage.getItem('firstScreen');
   window.addEventListener("load", function () {
     firstScreen.classList.add("js-active");
+    blockScrollBody();
     if (firstScreenLS === "on") {
       unblockScrollBody();
       firstScreen.remove();
