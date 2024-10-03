@@ -12,6 +12,7 @@ if (firstScreen) {
 
   window.addEventListener("load", () => {
     firstScreen.classList.add("js-active");
+    blockScrollBody();
      if (firstScreenLS === "on") {
       unblockScrollBody();
       firstScreen.remove();

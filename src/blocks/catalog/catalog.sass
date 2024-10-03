@@ -25,9 +25,9 @@
         bottom: 0
 
   &__list
-    &:hover > :not(:hover) img
-      //filter: brightness(0.6)
-      filter: blur(4px)
+    @media (min-width: $width-mobile)
+      &:hover > :not(:hover) img
+        filter: blur(4px)
 
 
 .v-line-inner-block
