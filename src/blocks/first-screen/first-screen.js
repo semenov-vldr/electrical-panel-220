@@ -1,19 +1,18 @@
-const firstScreen = document.querySelector("#first-screen");
+function handleFirstScreen() {
+  const firstScreen = document.querySelector("#first-screen");
+  if (!firstScreen) return;
 
-if (firstScreen) {
-
-  // отмечаем, что первый экран уже был
+  // Отмечаем, что первый экран уже был
   firstScreen.addEventListener("click", () => {
     window.localStorage.setItem("firstScreen", "on");
   });
-
 
   const firstScreenLS = window.localStorage.getItem('firstScreen');
 
   window.addEventListener("load", () => {
     firstScreen.classList.add("js-active");
     blockScrollBody();
-     if (firstScreenLS === "on") {
+    if (firstScreenLS === "on") {
       unblockScrollBody();
       firstScreen.remove();
     }
@@ -30,13 +29,15 @@ if (firstScreen) {
     }, 1000);
   };
 
-
   // Очистка из localStorage данных о первом экране
   const footerDetails = document.querySelector(".footer__details");
   if (footerDetails) {
     footerDetails.addEventListener("click", () => {
       window.localStorage.removeItem('firstScreen');
     });
-  }
+  };
 
 }
+
+handleFirstScreen()
+

@@ -11,6 +11,7 @@
 
 
   &__back
+    transition: $transition
     img
       width: 32px
       flex: 0 0 32px
@@ -20,6 +21,8 @@
       @include mobile
         width: 16px
         flex: 0 0 16px
+    &:hover
+      transform: translateX(-8px)
 
 
   &__content

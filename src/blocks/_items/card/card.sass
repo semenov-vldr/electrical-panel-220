@@ -24,11 +24,12 @@
     height: 380px
     width: 100%
     overflow: hidden
-    background-color: lightgrey
+    background-color: $bg
     img
       transition: $transition
       height: 100%
       width: 100%
+      object-fit: contain
     @include tablet
       height: 300px
     @include mobile
