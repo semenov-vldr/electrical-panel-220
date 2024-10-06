@@ -170,16 +170,11 @@ var catalogSwiper = new Swiper(".catalog__container", {
 });
 "use strict";
 
-var firstScreen = document.querySelector("#first-screen");
-if (firstScreen) {
-  var hiddenFirstScreen = function hiddenFirstScreen() {
-    firstScreen.classList.remove("js-active");
-    unblockScrollBody();
-    setTimeout(function () {
-      firstScreen.remove();
-    }, 1000);
-  };
-  // отмечаем, что первый экран уже был
+function handleFirstScreen() {
+  var firstScreen = document.querySelector("#first-screen");
+  if (!firstScreen) return;
+
+  // Отмечаем, что первый экран уже был
   firstScreen.addEventListener("click", function () {
     window.localStorage.setItem("firstScreen", "on");
   });
@@ -194,6 +189,13 @@ if (firstScreen) {
   });
   var assembly = firstScreen.querySelector(".first-screen__assembly");
   assembly.addEventListener("click", hiddenFirstScreen);
+  function hiddenFirstScreen() {
+    firstScreen.classList.remove("js-active");
+    unblockScrollBody();
+    setTimeout(function () {
+      firstScreen.remove();
+    }, 1000);
+  }
   ;
 
   // Очистка из localStorage данных о первом экране
@@ -203,7 +205,9 @@ if (firstScreen) {
       window.localStorage.removeItem('firstScreen');
     });
   }
+  ;
 }
+handleFirstScreen();
 "use strict";
 
 var mobileWidthMediaQuery = window.matchMedia('(max-width: 767px)');
