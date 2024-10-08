@@ -16,6 +16,10 @@ function createProductSlider (parent) {
   });
 
   let swiper__top = new Swiper(swiperTop, {
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -35,6 +39,27 @@ function createProductSlider (parent) {
 
 
 if (productPage) {
+
+  // Создание кнопок навигации слайдера
+  function createSwiperBtns() {
+    const btnPrev = document.createElement("div");
+    const btnNext = document.createElement("div");
+    btnPrev.classList.add("swiper-button-prev");
+    btnNext.classList.add("swiper-button-next");
+    return [btnPrev, btnNext];
+  };
+
+  // Добавление в слайдер кнопок навигации
+  const swiperThumbsList = productPage.querySelectorAll(".swiper-thumbs");
+  if (swiperThumbsList) {
+    swiperThumbsList.forEach(swiperThumb => {
+      const [btnPrev, btnNext] = createSwiperBtns();
+      swiperThumb.appendChild(btnPrev);
+      swiperThumb.appendChild(btnNext);
+    });
+  };
+
+
 
   const productSliders = productPage.querySelectorAll('.product-page__slider');
   productSliders.forEach(createProductSlider);
@@ -64,7 +89,6 @@ if (productPage) {
   productCase.addEventListener("change", () => {
     const checked = productCase.querySelector("input:checked");
   });
-
 
 
   // Создание галереи слайдера

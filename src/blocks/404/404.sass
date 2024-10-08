@@ -1,11 +1,15 @@
+.p-404
+  padding-bottom: 0
+  justify-content: center
+
 .page-404
+
 
   &__container
     @include fontSize(20, 32)
     text-align: center
     flex-direction: column
     @extend .flex-center
-    min-height: 100vh
 
   &__main
     width: 50vw
@@ -16,6 +20,9 @@
     @media (max-width: $width-mobile)
       width: 80vw
       margin-bottom: 40px
+
+  h1
+    margin-bottom: 64px
 
   a
     text-decoration: underline
