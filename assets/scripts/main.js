@@ -313,6 +313,12 @@ var popupOpenBtn = document.querySelector(".product-page__buy-button");
 popupOpenBtn && popupOpenBtn.addEventListener("click", popupOpen);
 "use strict";
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var productPage = document.querySelector(".product-page");
 function createProductSlider(parent) {
   // Слайдер с миниатюрами
@@ -328,6 +334,10 @@ function createProductSlider(parent) {
     initialSlide: 0
   });
   var swiper__top = new Swiper(swiperTop, {
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
     pagination: {
       el: '.swiper-pagination',
       clickable: true
@@ -345,9 +355,32 @@ function createProductSlider(parent) {
   });
 }
 if (productPage) {
+  // Создание кнопок навигации слайдера
+  var createSwiperBtns = function createSwiperBtns() {
+    var btnPrev = document.createElement("div");
+    var btnNext = document.createElement("div");
+    btnPrev.classList.add("swiper-button-prev");
+    btnNext.classList.add("swiper-button-next");
+    return [btnPrev, btnNext];
+  };
   var formatPrice = function formatPrice(dataPrice) {
     productPrice.textContent = "".concat(dataPrice.toLocaleString('ru-RU'), " \u20BD");
   };
+  ;
+
+  // Добавление в слайдер кнопок навигации
+  var swiperThumbsList = productPage.querySelectorAll(".swiper-thumbs");
+  if (swiperThumbsList) {
+    swiperThumbsList.forEach(function (swiperThumb) {
+      var _createSwiperBtns = createSwiperBtns(),
+        _createSwiperBtns2 = _slicedToArray(_createSwiperBtns, 2),
+        btnPrev = _createSwiperBtns2[0],
+        btnNext = _createSwiperBtns2[1];
+      swiperThumb.appendChild(btnPrev);
+      swiperThumb.appendChild(btnNext);
+    });
+  }
+  ;
   var productSliders = productPage.querySelectorAll('.product-page__slider');
   productSliders.forEach(createProductSlider);
   var productPrice = productPage.querySelector('.product-page__price');
@@ -384,6 +417,54 @@ if (productPage) {
     return Fancybox.show(imgSet);
   });
 }
+"use strict";
+
+function loadSdekWidget() {
+  window.widget = new window.CDEKWidget({
+    from: 'Новосибирск',
+    root: 'cdek-map',
+    apiKey: 'dad86943-dfef-45bd-9c5e-c404323cb093',
+    // 'yandex-api-key
+    canChoose: true,
+    servicePath: './service.php',
+    hideFilters: {
+      have_cashless: false,
+      have_cash: false,
+      is_dressing_room: false,
+      type: false
+    },
+    hideDeliveryOptions: {
+      office: false,
+      door: true
+    },
+    popup: true,
+    debug: false,
+    goods: [{
+      width: 10,
+      height: 10,
+      length: 10,
+      weight: 10
+    }],
+    defaultLocation: [82.9346, 55.0415],
+    lang: 'rus',
+    currency: 'RUB',
+    tariffs: {
+      office: [233, 137, 139],
+      door: [234, 136, 138]
+    },
+    onReady: function onReady() {
+      console.log("Виджет загружен");
+    },
+    onCalculate: function onCalculate() {
+      alert('Расчет стоимости доставки произведен');
+    },
+    onChoose: function onChoose() {
+      alert('Доставка выбрана');
+    }
+  });
+}
+
+//document.addEventListener('DOMContentLoaded', loadSdekWidget);
 "use strict";
 
 var filter = document.querySelector(".filter");
