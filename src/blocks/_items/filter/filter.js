@@ -11,13 +11,6 @@ if (filter) {
         filterItem.open = false;
       }
     });
-
-    // filterItem.addEventListener("change", () => {
-    //   const checkedValue = filterItem.querySelector("label:has(input[type='checkbox']:checked)");
-    //   const summary = filterItem.querySelector("summary");
-    //   summary.textContent = checkedValue.textContent;
-    // });
-
   });
 
 
@@ -64,14 +57,15 @@ if (filter) {
     mainCatalog.replaceChildren();
     const selectedSort = filterSort.querySelector("input:checked").value;
 
+
     const sortingValue = {
       cheap : sortingCheaperProductCards,
       expensive: sortingExpensiveProductCards,
-      popular: cards,
     }[selectedSort];
 
     sortingValue.forEach(card => mainCatalog.appendChild(card));
   };
 
+  sortingCards();
   filterSort.addEventListener("change", sortingCards);
 }

@@ -5,17 +5,20 @@
 
   &__grid
     display: grid
-    grid-template-columns: repeat(3, 1fr)
+    grid-template-columns: repeat(4, 1fr)
     gap: 32px
     @include tablet
       gap: 16px
+      grid-template-columns: repeat(3, 1fr)
+    @include mobile
       grid-template-columns: repeat(2, 1fr)
     @media (max-width: 540px)
       grid-template-columns: 1fr
 
-    @media (min-width: $width-mobile)
-      &:hover > :not(:hover) img
-        filter: blur(4px)
+    .card__img
+      height: 275px
+    .card__price
+      color: $accent-hover
 
   .v-line-inner::before
     left: calc(33.333% - 5px)
@@ -23,3 +26,10 @@
   .v-line-inner::after
     right: calc(33.333% - 5px)
     top: -15px
+
+  .v-line::before,
+  .v-line::after
+    @media (min-width: $width-mobile)
+      display: none
+
+

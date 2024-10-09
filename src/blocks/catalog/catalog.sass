@@ -10,19 +10,16 @@
 
   &.catalog--similar
     position: relative
-    @media (min-width: $width-mobile)
-      padding: 48px 0
-      &::before,
-      &::after
-        content: ""
-        position: absolute
-        width: 100%
-        height: 1px
-        background-color: $grey-line
-      &::before
-        top: 0
-      &::after
-        bottom: 0
+    //@media (min-width: $width-mobile)
+    padding: 48px 0
+    &::before
+      content: ""
+      position: absolute
+      width: 100%
+      height: 1px
+      background-color: $grey-line
+    &::before
+      top: 0
 
   &__list
     @media (min-width: $width-mobile)

@@ -1,13 +1,11 @@
 -
-  var avito_link = "https://www.avito.ru/brands/i179409844/all?src=search_seller_info&sellerId=c5b33c578c762fafb427745a1c37ed65"
   var ozon_link = "https://www.ozon.ru/seller/elektroshchitrf-1593379/stroitelstvo-i-remont-9700/?miniapp=seller_1593379"
 
 footer.footer#footer
-    .footer__container.container.v-line-inner
+    .footer__container.container.v-line
 
         .footer__top
             .footer__platforms(data-da=".footer__container, 767, 1")
-                a(href=avito_link target="_blank" title="Магазин на Авито"): img(src="./assets/img/icons/avito.svg")
                 a(href=ozon_link target="_blank" title="Магазин на Озон"): img(src="./assets/img/icons/ozon.svg")
 
             a.footer__logo(href='./')
@@ -15,9 +13,14 @@ footer.footer#footer
 
             address.footer__contacts
                 h4.footer__contacts-caption Контакты
-                a.footer__contacts-item(href="tel:+79999999999") +7 (999)-999-99-99
+                a.footer__contacts-item(href="tel:+79194109550") +7 (919)-410-95-50
+                a.footer__contacts-item(href="tel:+79190688146") +7 (919)-068-81-46
                 a.footer__contacts-item(href="mailto:injenernieresheniya@mail.ru") injenernieresheniya@mail.ru
 
         .footer__bottom
+            .footer__author
+                a(href="https://t.me/str8zh1" target="_blank") Дизайнер @str8zh1
+                a(href="https://t.me/sinceresv" target="_blank") Разработчик @sinceresv
+
             span.footer__copyright ©2024 <br> #[a(href="##") Политика конфиденциальности]
             span.footer__details(data-da=".footer__contacts, 767, last") ОГРН&nbsp;1057749631994 <br> ИНН&nbsp;7727563778

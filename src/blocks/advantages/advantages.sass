@@ -19,6 +19,8 @@
     display: grid
     grid-template-columns: repeat(3, 1fr)
     align-items: center
+    border-left: 1px solid $grey-line
+    border-right: 1px solid $grey-line
     @include tablet
       gap: 32px
     @include mobile
@@ -39,6 +41,8 @@
     text-decoration: underline
     text-align: center
     @media (min-width: $width-tablet)
+      &:not(:last-child)
+        border-right: 1px solid $grey-line
       padding: 48px 0
       height: 100%
       transition: $transition

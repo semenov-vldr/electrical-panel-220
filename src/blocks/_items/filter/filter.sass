@@ -15,9 +15,11 @@
     display: flex
     gap: 32px
     flex-wrap: wrap
+    justify-content: center
     @include mobile
       padding: 2px
       gap: 14px
+      justify-content: flex-start
 
   &__item:has(input:checked)
     outline-color: $black
