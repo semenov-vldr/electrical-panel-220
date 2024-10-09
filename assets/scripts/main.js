@@ -215,12 +215,13 @@ var footerContainer = document.querySelector(".footer__container");
 function changeFooterLineDecor() {
   if (mobileWidthMediaQuery.matches) {
     footerContainer.classList.add("v-line");
-    footerContainer.classList.remove("v-line-inner");
+    //footerContainer.classList.remove("v-line-inner");
   } else {
     footerContainer.classList.remove("v-line");
-    footerContainer.classList.add("v-line-inner");
+    // footerContainer.classList.add("v-line-inner");
   }
 }
+
 if (footerContainer) {
   changeFooterLineDecor();
   document.addEventListener("resize", changeFooterLineDecor);
@@ -490,8 +491,7 @@ if (filter) {
     var selectedSort = filterSort.querySelector("input:checked").value;
     var sortingValue = {
       cheap: sortingCheaperProductCards,
-      expensive: sortingExpensiveProductCards,
-      popular: cards
+      expensive: sortingExpensiveProductCards
     }[selectedSort];
     sortingValue.forEach(function (card) {
       return mainCatalog.appendChild(card);
@@ -506,12 +506,6 @@ if (filter) {
         filterItem.open = false;
       }
     });
-
-    // filterItem.addEventListener("change", () => {
-    //   const checkedValue = filterItem.querySelector("label:has(input[type='checkbox']:checked)");
-    //   const summary = filterItem.querySelector("summary");
-    //   summary.textContent = checkedValue.textContent;
-    // });
   });
 
   // Фильтрация карточек
@@ -534,5 +528,6 @@ if (filter) {
     return +b.dataset.price - +a.dataset.price;
   });
   ;
+  sortingCards();
   filterSort.addEventListener("change", sortingCards);
 }
