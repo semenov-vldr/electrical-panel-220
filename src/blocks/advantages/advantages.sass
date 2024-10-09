@@ -1,11 +1,8 @@
 .advantages
   border-top: 1px solid $grey-line
   border-bottom: 1px solid $grey-line
-  @include tablet
-    padding: 40px 0
   @include mobile
     border: none
-    padding: 0
 
 
   &__container
@@ -24,11 +21,13 @@
     @include tablet
       gap: 32px
     @include mobile
-      gap: 40px
+      gap: 0
       grid-template-columns: 1fr
-      padding: 40px 0
+      //padding: 40px 0
       border-top: 1px solid $grey-line
       border-bottom: 1px solid $grey-line
+      border-left: none
+      border-right: none
 
 
   &__item
@@ -40,16 +39,16 @@
     font-weight: 600
     text-decoration: underline
     text-align: center
-    @media (min-width: $width-tablet)
-      &:not(:last-child)
-        border-right: 1px solid $grey-line
-      padding: 48px 0
+    padding: 48px 0
+    height: 100%
+    &:not(:last-child)
+      border-right: 1px solid $grey-line
       height: 100%
       transition: $transition
       cursor: pointer
-      &:hover
-        background-color: $grey-line
-        outline: 1px solid $accent
+    &:hover
+      background-color: $grey-line
+      outline: 1px solid $accent
     @include mobile
       font-size: 20px
       &:nth-child(1) img

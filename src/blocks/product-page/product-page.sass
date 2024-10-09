@@ -18,7 +18,7 @@
     grid-template-columns: repeat(2, 1fr)
     gap: 24px 32px
     @include mobile
-      padding-bottom: 80px
+      padding-bottom: 40px
       display: flex
       flex-direction: column
       text-align: center
@@ -62,9 +62,6 @@
 
     img
       object-fit: contain
-
-    //&.scheme img
-    //  object-fit: contain
 
     .swiper-top
       max-height: 570px
@@ -286,11 +283,9 @@
       gap: 16px
       justify-content: space-between
       &:not(:last-child)
-        padding-bottom: 8px
         border-bottom: 1px solid $grey-line
-        @media (min-width: $width-mobile)
-          padding: 0 16px 8px
-          margin: 0 -16px
+        padding: 0 16px 8px
+        margin: 0 -16px
     @include mobile
       padding: 0 16px
 
