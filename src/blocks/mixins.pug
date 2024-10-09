@@ -5,7 +5,7 @@ mixin randerCards(dataList)
               img(src= card.imgSrc)
           .card__data
               h3.card__caption= card.caption
-              span.card__price= `${card.price.toLocaleString()} ₽`
+              span.card__price= `${ Intl.NumberFormat('ru-RU').format(card.price) } ₽`
               ul.card__params
                   li.card__params-item
                       span Количество фаз
@@ -23,7 +23,7 @@ mixin randerSlidesCards(dataList, ...ids)
                   img(src= card.imgSrc)
               .card__data
                   h3.card__caption= card.caption
-                  span.card__price= `${card.price.toLocaleString()} ₽`
+                  span.card__price= `${ Intl.NumberFormat('ru-RU').format(card.price) } ₽`
                   ul.card__params
                       li.card__params-item
                           span Количество фаз
@@ -46,7 +46,7 @@ mixin similarSlides(dataList, ...ids)
                                   img(src= card.imgSrc)
                               .card__data
                                   h3.card__caption= card.caption
-                                  span.card__price= `${card.price.toLocaleString()} ₽`
+                                  span.card__price= `${ Intl.NumberFormat('ru-RU').format(card.price) } ₽`
                                   ul.card__params
                                       li.card__params-item
                                           span Количество фаз
@@ -65,7 +65,7 @@ mixin productPageBack
 
 mixin productPageBuy(price)
     .product-page__buy
-        span.product-page__price= `${price.toLocaleString()} ₽`
+        span.product-page__price= `${ Intl.NumberFormat('ru-RU').format(price) } ₽`
         button.button.button--accent.product-page__buy-button(onclick="window.formPopup.showModal()") Купить
 
 

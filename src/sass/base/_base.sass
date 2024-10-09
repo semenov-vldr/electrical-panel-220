@@ -21,15 +21,17 @@ main
   display: flex
   flex-direction: column
   flex-grow: 1
-  gap: 100px
   background-color: $bg
   padding-bottom: 144px
   animation: transitionIn 1s
   @media (max-width: $width-tablet)
     padding-bottom: 96px
   @media (max-width: $width-mobile)
-    gap: 80px
     padding-bottom: 80px
+  &.index
+    gap: 100px
+    @media (max-width: $width-mobile)
+      gap: 80px
 
 
 @keyframes transitionIn
@@ -39,3 +41,11 @@ main
   to
     opacity: 1
     transform: translateY(0)
+
+
+section + section:not(.product-page)
+  margin-top: 96px
+  @media (max-width: $width-mobile)
+    margin-top: 80px
+  @media (max-width: 400px)
+    margin-top: 56px
