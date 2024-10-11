@@ -184,19 +184,28 @@ function handleFirstScreen() {
     blockScrollBody();
     if (firstScreenLS === "on") {
       unblockScrollBody();
-      firstScreen.remove();
+      firstScreen.classList.remove("js-active");
+      //firstScreen.remove();
     }
   });
+
   var assembly = firstScreen.querySelector(".first-screen__assembly");
   assembly.addEventListener("click", hiddenFirstScreen);
   function hiddenFirstScreen() {
     firstScreen.classList.remove("js-active");
     unblockScrollBody();
-    setTimeout(function () {
-      firstScreen.remove();
-    }, 1000);
+    // setTimeout(() => {
+    //   firstScreen.remove();
+    // }, 1000);
   }
   ;
+  var headerLogo = document.querySelector(".header__logo");
+  if (headerLogo) {
+    headerLogo.addEventListener("click", function () {
+      firstScreen.classList.add("js-active");
+      blockScrollBody();
+    });
+  }
 
   // Очистка из localStorage данных о первом экране
   var footerDetails = document.querySelector(".footer__details");
