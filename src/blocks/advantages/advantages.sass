@@ -23,7 +23,6 @@
     @include mobile
       gap: 0
       grid-template-columns: 1fr
-      //padding: 40px 0
       border-top: 1px solid $grey-line
       border-bottom: 1px solid $grey-line
       border-left: none
@@ -41,11 +40,10 @@
     text-align: center
     padding: 48px 0
     height: 100%
+    transition: $transition
+    cursor: pointer
     &:not(:last-child)
       border-right: 1px solid $grey-line
-      height: 100%
-      transition: $transition
-      cursor: pointer
     &:hover
       background-color: $grey-line
       outline: 1px solid $accent
@@ -76,7 +74,6 @@
         &::after
           width: 13px
           height: 13px
-
 
 
   &__popup
