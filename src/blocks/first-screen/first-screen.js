@@ -14,7 +14,8 @@ function handleFirstScreen() {
     blockScrollBody();
     if (firstScreenLS === "on") {
       unblockScrollBody();
-      firstScreen.remove();
+      firstScreen.classList.remove("js-active");
+      //firstScreen.remove();
     }
   });
 
@@ -24,10 +25,19 @@ function handleFirstScreen() {
   function hiddenFirstScreen () {
     firstScreen.classList.remove("js-active");
     unblockScrollBody();
-    setTimeout(() => {
-      firstScreen.remove();
-    }, 1000);
+    // setTimeout(() => {
+    //   firstScreen.remove();
+    // }, 1000);
   };
+
+
+  const headerLogo = document.querySelector(".header__logo");
+  if (headerLogo) {
+    headerLogo.addEventListener("click", () => {
+      firstScreen.classList.add("js-active");
+      blockScrollBody();
+    })
+  }
 
   // Очистка из localStorage данных о первом экране
   const footerDetails = document.querySelector(".footer__details");
